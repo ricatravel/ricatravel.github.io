@@ -1,0 +1,1709 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="logo-tondo.jpg">
+<title>Ricatravel</title>
+<link data-keep rel="preconnect" href="https://fonts.googleapis.com">
+<link data-keep rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Nanum+Brush+Script&display=swap">
+<style id="page-style">
+/* Layout: diario di viaggio su fondo verde salvia. Copertina con titolo al centro su un paesaggio a strati con profondità, poi pagine color sabbia con immagini ad arco, gallerie a due colonne e note scritte a mano */
+:root{
+  --sand:#FBF9F0; --paper:#F3F1E3; --ink:#2C4434; --muted:#526256;
+  --sea:#2C4434; --amber:#5E7A3A; --glow:#D3E3B6; --sage:#E4ECD0; --line:#DEDDC8; --wa:#2C4434; --onacc:#FBF9F0;
+  --shadow:rgba(30,43,34,.3);
+  --f-display:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
+  --f-hand:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
+  --f-accent:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
+  --f-body:'Figtree', system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
+body::after{content:"";position:fixed;top:0;right:0;bottom:0;left:0;pointer-events:none;z-index:50;opacity:.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--sea)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance;margin:0;letter-spacing:-.035em}
+h2{font-size:clamp(32px,4.6vw,54px);line-height:1.08}
+h2 em,h1 em{font-family:var(--f-accent);font-style:normal;font-weight:500;letter-spacing:-.035em;color:var(--amber)}
+h3{font-size:26px;line-height:1.15}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin:0 0 16px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.lead{color:var(--muted);max-width:56ch;margin:22px 0 0}
+.hand{font-family:var(--f-hand);font-weight:400;font-style:italic;font-size:18px !important;color:var(--amber);line-height:1.3;transform:none !important}
+.todo{background:color-mix(in srgb,var(--glow) 30%,transparent);border-radius:3px;padding:0 4px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--sand) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.brand{display:inline-flex;border-radius:50%;overflow:hidden;flex:none;box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.brand:hover{transform:rotate(-10deg)}
+.brand img{display:block;width:68px;height:68px;max-width:none;object-fit:cover}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 26px;margin:0;padding:0}
+nav a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 0;display:inline-block;background:linear-gradient(currentColor,currentColor) 0 78%/0 1px no-repeat;transition:background-size .3s}
+nav a:hover{background-size:100% 1px}
+@media (max-width:640px){nav ul{gap:0 12px} nav a{font-size:10.5px;letter-spacing:.08em;padding:6px 0} .brand img{width:56px;height:56px}}
+
+/* hero: paesaggio a strati con profondità, testo al centro */
+.hero{position:relative;overflow:hidden;isolation:isolate;min-height:clamp(620px,90svh,920px);display:grid;align-items:start;justify-items:center;text-align:center;
+  background:linear-gradient(180deg,#F8F1E6 0%,#F5E7D3 45%,#F1D9BC 72%,#EDCFAE 100%)}
+.scene{position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;pointer-events:none}
+.scene .layer{position:absolute;left:-4%;right:-4%;bottom:0;width:108%;height:100%;will-change:transform}
+.scene svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.sun{position:absolute;left:50%;top:58%;width:clamp(220px,30vw,420px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle,#FCE7C6 0%,#F7D6A6 38%,rgba(247,214,166,.35) 58%,rgba(247,214,166,0) 72%)}
+.birds{position:absolute;left:0;top:18%;width:100%;height:120px;animation:birds 38s linear infinite}
+.birds svg{width:100%;height:100%}
+@keyframes birds{from{transform:translateX(-30%)}to{transform:translateX(30%)}}
+.route{position:absolute;left:50%;top:9%;width:min(1100px,96%);translate:-50% 0;height:auto;overflow:visible}
+.route path{stroke-dasharray:3 9;animation:dash 2.6s cubic-bezier(.3,.6,.2,1) both}
+@keyframes dash{from{stroke-dashoffset:600;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+.hero-text{position:relative;z-index:2;display:grid;justify-items:center;gap:22px;padding-block:clamp(56px,11vh,120px) 0;max-width:900px}
+.hero-text > *{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
+.hero-text > *:nth-child(2){animation-delay:.1s}
+.hero-text > *:nth-child(3){animation-delay:.2s}
+.hero-text > *:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{transform:translateY(26px)}to{transform:none}}
+.hero .eyebrow{justify-content:center;margin:0}
+.hero .eyebrow::after{content:"";width:28px;height:1px;background:currentColor}
+.hero h1{font-size:clamp(46px,8.4vw,124px);line-height:.98;letter-spacing:-.045em;max-width:none}
+.hero h1 em{color:var(--sea)}
+.hero-sub{margin:0;max-width:44ch;font-size:clamp(16px,1.4vw,18px);color:#4A5446}
+.hero .cta{justify-content:center}
+.scroll-cue{position:absolute;left:50%;bottom:30px;translate:-50% 0;z-index:2;display:grid;justify-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#EEF2E8;text-decoration:none}
+.scroll-cue i{width:1px;height:34px;background:linear-gradient(currentColor,transparent);animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+@media (max-width:640px){.hero{min-height:720px}.hero-text{padding-top:48px}.route{top:6%}}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;border:0;cursor:pointer;font-family:var(--f-body);transition:transform .25s,filter .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:var(--onacc)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:19px;height:19px;flex:none}
+@keyframes wave{to{transform:translateX(-50%)}}
+
+/* ticker */
+.ticker{overflow:hidden;white-space:nowrap;padding-block:24px;border-bottom:1px solid var(--line)}
+.ticker div{display:inline-flex;align-items:center;gap:34px;animation:wave 34s linear infinite;font-family:var(--f-accent);font-style:italic;font-weight:300;font-size:28px;color:var(--ink)}
+.ticker svg{width:22px;height:22px;flex:none;color:var(--amber)}
+
+section{padding-block:clamp(64px,8vw,104px) clamp(16px,3vw,32px)}
+#contatti{padding-bottom:clamp(48px,6vw,80px)}
+nav a[aria-current="page"]{background-size:100% 1px;color:var(--sea)}
+
+/* home: prossima partenza + esplora */
+.home-more{display:grid;gap:clamp(40px,5vw,64px);padding-block:clamp(48px,6vw,80px) clamp(56px,7vw,96px)}
+.explore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:720px){.explore{grid-template-columns:1fr}}
+.tile{position:relative;display:block;border-radius:22px;overflow:hidden;aspect-ratio:4/3;max-width:100%;color:#F4F6EF;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.tile::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(180deg,rgba(22,40,30,0) 35%,rgba(22,40,30,.8))}
+.tile:hover img{transform:scale(1.06)}
+.tile span{position:absolute;left:20px;right:20px;bottom:16px;display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-display);font-size:30px;line-height:1}
+.tile small{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+@media (prefers-reduced-motion: reduce){.tile:hover img{transform:none}}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 40px}
+.head .hand{font-size:40px;transform:rotate(-4deg);max-width:16ch}
+
+/* trips */
+.trips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px 20px;margin-top:clamp(40px,5vw,56px)}
+.trip{display:flex;flex-direction:column;gap:20px;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:14px 14px 24px;box-shadow:0 18px 36px -30px var(--shadow)}
+.trip > :not(.arch){margin-inline:8px}
+.arch{position:relative;border-radius:999px 999px 16px 16px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--line);box-shadow:0 22px 40px -28px var(--shadow)}
+.arch img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.trip:hover .arch img{transform:scale(1.06)}
+.date{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);white-space:nowrap;background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:700;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.trip-top{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.trip-top span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.trip p{margin:0;color:var(--muted)}
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:360px){.inc{grid-template-columns:1fr}}
+.inc h4{margin:0 0 6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.inc ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.inc li{padding-left:16px;position:relative}
+.inc .yes li::before{content:"+";position:absolute;left:0;color:var(--sea);font-weight:700}
+.inc .no li::before{content:"–";position:absolute;left:0;color:var(--amber);font-weight:700}
+.trip-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.price{display:flex;flex-direction:column;line-height:1.1}
+.price span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.price b{font-family:var(--f-display);font-weight:400;font-size:30px}
+.btn-line{background:transparent;color:var(--ink);border:1px solid var(--ink);min-height:44px;padding:10px 20px}
+.btn-line:hover{background:var(--ink);color:var(--sand)}
+
+.past{display:grid;gap:64px;margin-top:clamp(40px,5vw,56px)}
+.past-head{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;margin-bottom:36px}
+.past-head span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* viaggi passati: galleria pulita a due colonne */
+.past-head span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.6vw,18px)}
+.gal-item{display:block;padding:0;border:0;background:var(--line);border-radius:16px;overflow:hidden;cursor:zoom-in;min-width:0}
+.gal-item img{display:block;width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gal-item:hover img{transform:scale(1.04)}
+.gal.wide-first .gal-item:first-child{grid-column:1 / -1}
+.gal.wide-first .gal-item:first-child img{aspect-ratio:16/9}
+@media (max-width:520px){.gal-item{border-radius:12px}}
+.past-head span{white-space:nowrap}
+
+
+/* badge e tag sulle schede viaggio */
+.badge{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:7px;background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px 6px 10px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--wa)}
+.tag{margin:0 0 -12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+
+/* come funziona */
+.how{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:56px 1fr;gap:4px 16px;border-top:1px solid var(--line);padding-block:18px;color:var(--muted)}
+.steps li::before{content:counter(st);grid-row:span 2;font-family:var(--f-display);font-size:44px;line-height:1;color:var(--sea)}
+.steps b{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.1;color:var(--ink)}
+
+/* momenti */
+.moments-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.moments-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.moments-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.moments-grid a{display:block;border-radius:14px;overflow:hidden;aspect-ratio:1;max-width:100%;background:var(--line)}
+.moments-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.moments-grid a:hover img{transform:scale(1.06)}
+
+/* destinazioni passate */
+.dest{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(32px,4vw,48px)}
+@media (max-width:640px){.dest{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dest-tile{position:relative;display:block;padding:0;border:0;border-radius:18px;overflow:hidden;aspect-ratio:3/4;max-width:100%;cursor:pointer;isolation:isolate;background:var(--line)}
+.dest-tile img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.dest-tile::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(180deg,rgba(22,40,30,0) 45%,rgba(22,40,30,.8))}
+.dest-tile:hover img{transform:scale(1.06)}
+.dest-tile span{position:absolute;left:16px;bottom:14px;font-family:var(--f-display);font-size:clamp(24px,3vw,32px);color:#F4F6EF;line-height:1}
+.trip-gal{scroll-margin-top:110px}
+
+/* whatsapp sempre a portata */
+.wa-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:12px 20px;border-radius:999px;background:var(--wa);color:var(--onacc);font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 14px 30px -12px var(--shadow);transition:transform .25s}
+.wa-fab:hover{transform:translateY(-2px)}
+.wa-fab svg{width:20px;height:20px}
+@media (max-width:520px){.wa-fab span{display:none}.wa-fab{padding:14px}}
+
+/* footer */
+.foot{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:32px;text-align:left;letter-spacing:0}
+@media (max-width:640px){.foot{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1 / -1}}
+.foot-brand{display:grid;gap:14px;justify-items:start}
+.foot-brand p{margin:0;max-width:34ch;font-size:15px}
+.foot h4{margin:0 0 10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.foot a{color:var(--muted);text-decoration:none;font-size:15px}
+.foot a:hover{color:var(--sea)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;width:100%}
+
+
+/* ritocchi per laptop e telefono */
+.arch .badge{left:50%;top:18px;transform:translateX(-50%);white-space:nowrap}
+@media (max-width:640px){
+  .bar{gap:12px}
+  nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  nav::-webkit-scrollbar{display:none}
+  nav ul{flex-wrap:nowrap;justify-content:flex-start;gap:0 16px;padding-right:16px}
+  nav a{white-space:nowrap;font-size:11px}
+  .tile{aspect-ratio:16/9}
+  .hero-text{gap:20px}
+}
+/* carosello partenze */
+.home-more > *{min-width:0}
+.deps-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.deps-nav{display:flex;gap:10px}
+.deps-arrow{color:var(--ink);border-color:var(--line);background:var(--paper)}
+.deps-arrow:hover{background:var(--sage)}
+.deps-arrow:disabled{opacity:.35;cursor:default}
+.deps-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:none}
+.deps-track::-webkit-scrollbar{display:none}
+.dep{flex:0 0 clamp(250px,32%,340px);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:12px;display:flex;flex-direction:column;gap:14px;box-shadow:0 18px 36px -30px var(--shadow);min-width:0}
+.dep-img{position:relative;aspect-ratio:1;max-width:100%;border-radius:14px;overflow:hidden;background:var(--line)}
+.dep-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.dep:hover .dep-img img{transform:scale(1.05)}
+.dep-body{display:grid;gap:6px;padding:0 6px 6px}
+.dep-body h3{font-size:22px}
+.dep-body p{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.dep-body .btn{justify-content:center;width:100%}
+.dep-body .btn + .btn{margin-top:6px}
+.dep-body p.dep-price{font-size:22px;font-weight:600;color:var(--ink);margin:0 0 10px}
+@media (prefers-reduced-motion: reduce){.deps-track{scroll-behavior:auto}.dep:hover .dep-img img{transform:none}}
+
+
+/* pagina viaggio */
+.trip-page{padding-top:clamp(24px,4vw,40px)}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;min-height:44px}
+.back svg{width:18px;height:18px}
+.back:hover{color:var(--sea)}
+.tp-hero{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:21/9;max-width:100%;margin-top:8px;isolation:isolate;background:var(--line)}
+@media (max-width:640px){.tp-hero{aspect-ratio:4/5;border-radius:20px}}
+.tp-hero img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.tp-hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(180deg,rgba(20,32,24,0) 40%,rgba(20,32,24,.72))}
+.tp-hero-text{position:absolute;left:clamp(20px,4vw,48px);right:20px;bottom:clamp(20px,4vw,44px);color:#FFFCF6;display:grid;gap:10px;justify-items:start}
+.tp-hero-text .badge{position:static}
+.tp-hero-text h1{font-size:clamp(52px,9vw,120px);line-height:.95;letter-spacing:-.045em}
+.tp-hero-text p{margin:0;font-size:clamp(14px,1.4vw,17px);font-weight:500;letter-spacing:.04em}
+.tp-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(32px,5vw,72px);align-items:start;margin-top:clamp(40px,5vw,64px)}
+@media (max-width:900px){.tp-grid{grid-template-columns:1fr}}
+.tp-main{display:grid;gap:clamp(48px,6vw,72px);min-width:0}
+.stops{list-style:none;margin:8px 0 0;padding:0;display:grid;position:relative}
+.stops::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:0;border-left:1.5px dashed var(--glow)}
+.stop{display:grid;grid-template-columns:20px 1fr;gap:18px;padding-block:14px}
+.stop-dot{width:20px;height:20px;border-radius:50%;background:var(--sand);border:2px solid var(--sea);margin-top:4px;position:relative;z-index:1}
+.stop h3{font-size:21px}
+.stop p{margin:4px 0 0;color:var(--muted);max-width:58ch}
+.tp-incl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:640px){.tp-incl{grid-template-columns:1fr}}
+.incl-box{border-radius:22px;padding:24px;border:1px solid var(--line);background:var(--paper)}
+.incl-box.yes{background:var(--sage);border-color:transparent}
+.incl-box h3{font-size:20px;margin-bottom:14px}
+.incl-box ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.incl-box li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.incl-box li svg{width:28px;height:28px;padding:5px;border-radius:50%;background:var(--paper);color:var(--wa)}
+.incl-box.no li svg{background:var(--sand);color:#E9A08C}
+.incl-box li b{display:block;font-weight:600}
+.incl-box li span{font-size:14px;color:var(--muted)}
+.incl-box li span b{color:var(--ink);font-size:16px}
+.tp-book{position:sticky;top:110px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:18px;box-shadow:0 22px 44px -32px var(--shadow)}
+@media (max-width:900px){.tp-book{position:static}}
+.tp-book dl{margin:0;display:grid;gap:0}
+.tp-book dl div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-block:12px;font-size:14px}
+.tp-book dt{color:var(--muted)}
+.tp-book dd{margin:0;font-weight:600;text-align:right}
+.tp-book .btn{justify-content:center}
+.tp-note{margin:0;font-size:13px;color:var(--muted);text-align:center}
+.dep-img{display:block}
+.dep-title{color:inherit;text-decoration:none}
+.dep-title:hover{color:var(--sea)}
+.more{color:var(--sea);font-weight:600;text-decoration:none}
+.more:hover{text-decoration:underline}
+a.arch{display:block}
+
+.highlights{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
+.highlights li{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px}
+.highlights h3{font-size:19px}
+.highlights p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+
+
+/* effetti */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--sea),#9DAE94,#E7B36E);pointer-events:none}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .w > span{display:inline-block;animation:wordup 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wordup{from{transform:translateY(105%) rotate(4deg)}to{transform:none}}
+.sun{animation:sunpulse 7s ease-in-out infinite}
+@keyframes sunpulse{0%,100%{scale:1}50%{scale:1.07}}
+.cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,252,246,.95),rgba(255,252,246,0));filter:blur(4px);pointer-events:none}
+.c-a{top:16%;left:-10%;width:340px;height:90px;animation:drift-c 70s linear infinite}
+.c-b{top:30%;left:-20%;width:240px;height:64px;opacity:.8;animation:drift-c 95s linear infinite;animation-delay:-40s}
+.c-c{top:8%;left:-15%;width:420px;height:110px;opacity:.6;animation:drift-c 120s linear infinite;animation-delay:-80s}
+@keyframes drift-c{from{transform:translateX(0)}to{transform:translateX(140vw)}}
+.rv{transform:translateY(46px);opacity:.2;transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity 1s ease}
+.rv.in{transform:none;opacity:1}
+h2 em{background:linear-gradient(transparent 0) 0 0/0 0;background-image:linear-gradient(var(--glow),var(--glow));background-repeat:no-repeat;background-position:0 88%;background-size:0 .16em;transition:background-size 1.1s cubic-bezier(.2,.7,.2,1) .25s}
+.in h2 em,h2.in em,.page-in h2 em{background-size:100% .16em}
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.btn-wa{z-index:0}
+.btn:hover::after{transform:translateX(120%)}
+.tilt{transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;will-change:transform}
+.tilt.tilting{transition:transform .12s linear}
+.dep,.trip,.gal-item{position:relative}
+.tilt::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.28),transparent 45%);z-index:3}
+.tilt.tilting::after{opacity:1}
+.page.page-in{animation:pagein .7s cubic-bezier(.2,.7,.2,1)}
+@keyframes pagein{from{opacity:.0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.wa-fab{animation:fabin .8s cubic-bezier(.2,.8,.2,1) 1.2s both}
+.wa-fab::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(46,94,68,.45);animation:ping 2.6s ease-out 2s infinite;pointer-events:none}
+@keyframes fabin{from{transform:translateY(30px) scale(.8);opacity:0}to{transform:none;opacity:1}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(46,94,68,.45)}80%,100%{box-shadow:0 0 0 18px rgba(46,94,68,0)}}
+@media (prefers-reduced-motion: reduce){
+  .hero h1 .w > span,.sun,.cloud,.page.page-in,.wa-fab,.wa-fab::before{animation:none}
+  .rv{transform:none;opacity:1;transition:none}
+  .btn::after{display:none}
+  h2 em{transition:none;background-size:100% .16em}
+}
+
+/* copertina con foto */
+.hero-dark{background:radial-gradient(ellipse 70% 60% at 50% 35%,#477055 0%,#3A6148 55%,#33573F 100%);color:#FFFCF6}
+.hero-curve{position:absolute;left:0;right:0;bottom:-1px;height:clamp(40px,6vw,80px)}
+.hero-curve svg{width:100%;height:100%;display:block}
+.photo-layer{top:-6%;height:112%}
+.photo-layer img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block;animation:slowzoom 30s ease-in-out infinite alternate}
+@keyframes slowzoom{from{transform:scale(1.04)}to{transform:scale(1.14)}}
+.photo-shade{position:absolute;top:0;right:0;bottom:0;left:0;background:
+  radial-gradient(ellipse 60% 55% at 50% 38%,rgba(20,32,24,.48),rgba(20,32,24,0) 75%),
+  linear-gradient(180deg,rgba(20,32,24,.35) 0%,rgba(20,32,24,.12) 45%,rgba(245,239,228,0) 78%,rgba(245,239,228,.85) 94%,#F5EFE4 100%)}
+.hero-dark .eyebrow{color:#FFFCF6}
+.hero-dark h1{color:#FFFCF6;text-shadow:0 2px 30px rgba(10,20,14,.35)}
+.hero-dark h1 em{color:#DDE8D0}
+.hero-dark .hero-sub{color:#F4F1EA;text-shadow:0 1px 14px rgba(10,20,14,.45)}
+.hero-dark .btn-ghost{color:#FFFCF6;border-color:rgba(255,252,246,.85);backdrop-filter:blur(6px);background:rgba(255,252,246,.08)}
+.hero-dark .btn-ghost:hover{background:#FFFCF6;color:var(--ink)}
+.hero-dark .btn-wa{background:#F5EFE4;color:#1F3A2E}
+.hero-dark .route path,.hero-dark .route g path{stroke:#FFFCF6;opacity:.8}
+.hero-dark .scroll-cue{color:#DDE8D0;bottom:clamp(54px,7vw,96px)}
+@media (prefers-reduced-motion: reduce){.photo-layer img{animation:none}}
+
+/* contrasto: schede chiare e foto con bordino */
+.dep,.trip,.tp-book,.incl-box,.highlights li,.contact,.badge,.date,.deps-arrow{
+  --paper:#F3F1E3; --sand:#FBF9F0; --ink:#2C4434; --muted:#526256; --line:#DEDDC8;
+  --sea:#2C4434; --amber:#5E7A3A; --glow:#D3E3B6; --sage:#E4ECD0; --wa:#2C4434; --onacc:#FBF9F0;
+  color:var(--ink)}
+.dep,.trip,.tp-book,.highlights li,.incl-box.no{background:var(--paper);border-color:transparent}
+.deps-arrow{background:var(--paper);border-color:transparent}
+.deps-arrow:hover{background:#FFFCF6}
+.deps-arrow:disabled{opacity:.3}
+.gal-item,.tile,.dest-tile,.tp-hero,.about .arch{border:3px solid #E4ECD0}
+.dep-img,.trip .arch{box-shadow:0 0 0 2px #E4ECD0}
+.gal-item{border-radius:18px}
+
+/* partenze: righe grandi alternate, stile Travel Wild */
+.trows{display:grid;gap:clamp(24px,3vw,36px);margin-top:clamp(40px,5vw,64px)}
+.trow{border:1px solid transparent;border-radius:32px;padding:clamp(14px,1.6vw,20px);padding-right:clamp(20px,3vw,44px);box-shadow:0 30px 60px -40px rgba(0,0,0,.55)}
+.trow.flip{padding-right:clamp(14px,1.6vw,20px);padding-left:clamp(20px,3vw,44px)}
+@media (max-width:820px){.trow,.trow.flip{padding:14px 14px 24px}.trow-body{padding-inline:8px}}
+
+.trow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.trow.flip .trow-img{order:2}
+@media (max-width:820px){.trow{grid-template-columns:1fr}.trow.flip .trow-img{order:0}}
+.trow-img{position:relative;display:block;aspect-ratio:4/3;max-width:100%;border-radius:22px;overflow:hidden;border:3px solid #E4ECD0;background:var(--line)}
+.trow-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.trow:hover .trow-img img{transform:scale(1.05)}
+.trow-img .badge{--paper:#F7F1E4;--ink:#1F2B22;--wa:#2E5E44;color:var(--ink)}
+.trow-body{display:grid;gap:14px;justify-items:start;min-width:0}
+.trow-num{margin:0;font-family:var(--f-accent);font-style:italic;font-size:22px;color:var(--amber)}
+.trow-body h3{font-size:clamp(40px,5.5vw,72px);line-height:.95;letter-spacing:-.04em}
+.trow-dates{margin:0;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sea)}
+.trow-desc{margin:0;color:var(--muted);max-width:48ch}
+.trow-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.trow-tags li{padding:6px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--ink)}
+.trow-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;width:100%;border-top:1px solid var(--line);padding-top:18px;margin-top:6px}
+.trow-price{margin:0;font-family:var(--f-display);font-weight:700;font-size:32px;letter-spacing:-.02em}
+.trow-btns{display:flex;flex-wrap:wrap;gap:10px}
+.trow .btn-line{color:var(--ink);border:1px solid var(--ink)}
+.trow .btn-line:hover{background:var(--ink);color:var(--onacc)}
+@media (prefers-reduced-motion: reduce){.trow:hover .trow-img img{transform:none}}
+
+/* frase manifesto e numeri */
+.statement{padding-block:clamp(56px,8vw,112px) 0;display:grid;gap:clamp(32px,5vw,56px)}
+.statement-text{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(28px,4.4vw,58px);line-height:1.12;letter-spacing:-.03em;max-width:22ch;text-wrap:balance}
+.statement-text em{font-family:var(--f-accent);font-weight:300;font-style:italic;color:var(--sea)}
+.stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);padding-top:24px}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+.stats li{display:grid;gap:4px}
+.stats b{font-family:var(--f-display);font-weight:700;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.04em}
+.stats span{color:var(--muted);font-size:14px;max-width:24ch}
+
+
+/* allineamento schede home */
+.dep{display:flex;flex-direction:column}
+.dep-body{flex:1;display:flex;flex-direction:column;gap:6px}
+.dep-body h3{min-height:1.15em}
+.dep-body > p:not(.dep-price){min-height:2.9em;margin:0}
+.dep-body .dep-price{margin:auto 0 10px;padding-top:6px}
+/* schede partenze beige */
+.trow{--paper:#F3F1E3;--sand:#FBF9F0;--ink:#2C4434;--muted:#526256;--line:#DEDDC8;--sea:#2C4434;--amber:#5E7A3A;--wa:#2C4434;--onacc:#FBF9F0;
+  background:#F3F1E3;border-color:#E6E5D2;color:var(--ink)}
+.trow .trow-tags li{border-color:#D3E3B6;background:#E4ECD0}
+.trow .trow-foot{border-top-color:#E1D5BF}
+.trow .trow-img{border-color:#EFE6D3}
+/* copertina a tutto schermo con foto che scorrono come un video */
+.hero-reel{min-height:100svh;background:#1F3A2E;color:#FFFCF6;align-items:center}
+@media (max-width:640px){.hero-reel{min-height:calc(100svh - 80px)}}
+.reel{position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;overflow:hidden}
+.slide{position:absolute;top:-2%;right:-2%;bottom:-2%;left:-2%;background-size:cover;opacity:0;transform:scale(1.12);transition:opacity 1.6s ease}
+.slide.on{opacity:1;animation:kb 7s linear both}
+@keyframes kb{from{transform:scale(1.12) translate(1.5%,1%)}to{transform:scale(1.02) translate(-1%,-1%)}}
+.reel-shade{position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg,rgba(15,25,19,.45) 0%,rgba(15,25,19,.25) 40%,rgba(15,25,19,.55) 100%)}
+.hero-reel .hero-text{padding-block:0;gap:26px}
+.hero-kicker{margin:0;font-family:var(--f-accent);font-style:italic;font-weight:300;font-size:clamp(18px,2vw,24px);color:#F1EBDD}
+.hero-reel h1{color:#FFFCF6;font-size:clamp(44px,8vw,112px);line-height:.98;letter-spacing:-.04em;max-width:13ch;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+.hero-reel h1 em{color:#E8DDBE}
+.hero-reel .btn-wa{background:#F5EFE4;color:#1F3A2E}
+.hero-reel .btn-ghost{color:#FFFCF6;border-color:rgba(255,252,246,.85);background:rgba(255,252,246,.08);backdrop-filter:blur(6px)}
+.hero-reel .btn-ghost:hover{background:#FFFCF6;color:#1F3A2E}
+.hero-reel .scroll-cue{color:#F1EBDD;bottom:28px}
+.hero-reel .route{display:none}
+@media (prefers-reduced-motion: reduce){.slide.on{animation:none;transform:none}.slide{transition:none}}
+
+.reel-video{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+
+/* esplora: indice a righe grandi con foto */
+.index{display:grid;border-top:1px solid var(--line)}
+.ix{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:clamp(14px,3vw,36px);padding-block:clamp(14px,2vw,22px);border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;position:relative}
+.ix-thumb{width:clamp(64px,9vw,120px);aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:2px solid #E4ECD0;transition:transform .6s cubic-bezier(.2,.7,.2,1),width .6s cubic-bezier(.2,.7,.2,1)}
+.ix-name{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,5.4vw,72px);line-height:1;letter-spacing:-.04em;transition:transform .5s cubic-bezier(.2,.7,.2,1),color .3s}
+.ix-sub{color:var(--muted);font-size:14px;text-align:right}
+.ix-arrow{width:clamp(26px,3vw,40px);height:auto;color:var(--sea);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ix:hover .ix-name{transform:translateX(12px);color:var(--sea)}
+.ix:hover .ix-thumb{transform:rotate(-4deg) scale(1.08)}
+.ix:hover .ix-arrow{transform:translateX(8px) rotate(-45deg)}
+@media (max-width:700px){.ix{grid-template-columns:auto minmax(0,1fr) auto}.ix-sub{display:none}}
+@media (prefers-reduced-motion: reduce){.ix-name,.ix-thumb,.ix-arrow{transition:none}}
+
+/* copertina più compatta */
+.hero-reel{min-height:clamp(560px,86svh,900px)}
+@media (max-width:640px){.hero-reel{min-height:78svh;padding-block:40px 70px}}
+.hero-reel .hero-text{gap:18px}
+.hero-kicker{font-size:clamp(15px,1.6vw,20px)}
+.hero-reel h1{font-size:clamp(34px,6.4vw,88px)}
+.hero-reel .btn{min-height:44px;padding:10px 20px;font-size:14px}
+@media (max-width:640px){.hero-reel .cta{gap:10px}.hero-reel .cta .btn{width:auto}}
+.hero-reel .scroll-cue{bottom:16px}
+.hero-reel .scroll-cue i{height:24px}
+
+/* palette "wild": header verde scuro, crema e verde chiaro */
+header{background:#2C4434;border-bottom-color:#2C4434}
+header nav a{color:#FBF9F0}
+header nav a[aria-current="page"],header nav a:hover{color:#D3E3B6}
+.brand{box-shadow:0 0 0 3px #2C4434,0 0 0 4px #D3E3B6}
+.dep,.trip,.tp-book,.highlights li{border:1px solid #E6E5D2}
+.contact{background:#2C4434;color:#FBF9F0}
+.contact .eyebrow,.contact h2,.contact p,.contact .handle{color:#FBF9F0}
+.contact h2 em{color:#D3E3B6}
+.contact .btn-wa{background:#D3E3B6;color:#2C4434}
+.sun-deco{color:#D3E3B6}
+.hero-reel h1 em{color:#D3E3B6}
+.ticker{background:#D3E3B6;border-bottom:0}
+.ticker div{color:#2C4434;font-style:normal;font-weight:500}
+.ticker svg{color:#2C4434}
+.tag{background:#E4ECD0;color:#2C4434}
+.eyebrow{color:#5E7A3A}
+footer{background:#2C4434;color:#D7DDCF;border-top:0}
+footer .foot h4{color:#FBF9F0}
+footer .foot a{color:#D7DDCF}
+footer .foot a:hover{color:#D3E3B6}
+footer .foot-bottom{border-top-color:rgba(251,249,240,.18)}
+.progress{background:linear-gradient(90deg,#2C4434,#D3E3B6)}
+
+.statement-text em{font-style:normal;font-weight:600;color:#5E7A3A}
+.hero-kicker,.trow-num,.hand{font-style:normal}
+.dep-body h3,.trow-body h3{font-weight:600}
+
+h1,h2,h3{letter-spacing:-.025em}
+h2 em{background-image:linear-gradient(#D3E3B6,#D3E3B6);background-repeat:no-repeat;background-position:0 100%;background-size:0 .14em;padding-bottom:.08em;transition:background-size 1.1s cubic-bezier(.2,.7,.2,1) .25s}
+.in h2 em,h2.in em,.page-in h2 em,.head.in h2 em{background-size:100% .14em}
+@media (prefers-reduced-motion: reduce){h2 em{transition:none;background-size:100% .14em}}
+
+/* nota scritta a mano */
+.hand,.head .hand{font-family:'Nanum Brush Script','Segoe Script',cursive !important;font-weight:400;font-style:normal;font-size:clamp(34px,3.6vw,44px) !important;line-height:.9;color:#5E7A3A;transform:rotate(-4deg) !important;max-width:14ch}
+
+/* quiz: pulsante in home */
+.quiz-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;padding:clamp(24px,4vw,40px);border-radius:28px;background:#2C4434;color:#FBF9F0;text-decoration:none;position:relative;overflow:hidden;isolation:isolate}
+.quiz-cta::before{content:"";position:absolute;right:-60px;top:-60px;width:240px;aspect-ratio:1;border-radius:50%;background:#D3E3B6;opacity:.18;z-index:-1;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.quiz-cta:hover::before{transform:scale(1.4)}
+.quiz-cta-text{display:grid;gap:8px;min-width:0}
+.quiz-cta .eyebrow{color:#D3E3B6;margin:0}
+.quiz-cta b{font-family:var(--f-display);font-weight:600;font-size:clamp(24px,3.4vw,40px);line-height:1.1;letter-spacing:-.03em;max-width:20ch}
+.quiz-cta b em{font-style:normal;color:#D3E3B6}
+.quiz-cta .btn-wa{background:#D3E3B6;color:#2C4434}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,72px);align-items:start}
+@media (max-width:820px){.faq{grid-template-columns:1fr}}
+.faq-list{display:grid;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;padding-block:20px;font-family:var(--f-display);font-weight:600;font-size:clamp(17px,1.6vw,20px);color:var(--ink);min-height:44px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-ico{width:22px;height:22px;flex:none;color:var(--amber);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.faq-item[open] .faq-ico{transform:rotate(45deg)}
+.faq-item p{margin:0 0 20px;color:var(--muted);max-width:60ch;animation:faqin .4s ease}
+@keyframes faqin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq-item summary:hover{color:var(--amber)}
+
+/* quiz: pagina */
+.quiz-wrap{padding-block:clamp(24px,4vw,40px) clamp(56px,7vw,96px);max-width:820px}
+.quiz-card{margin-top:12px;background:#F3F1E3;border:1px solid #E6E5D2;border-radius:32px;padding:clamp(24px,5vw,56px);box-shadow:0 30px 60px -44px rgba(44,68,52,.5)}
+.qz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.qz-bar{height:6px;border-radius:999px;background:#E4ECD0;margin:14px 0 clamp(24px,4vw,40px);overflow:hidden}
+.qz-bar i{display:block;height:100%;background:#2C4434;border-radius:inherit;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.qz-q{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.03em;margin:0 0 clamp(20px,3vw,32px)}
+.qz-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.qz-opts{grid-template-columns:1fr}}
+.qz-opt{display:flex;align-items:center;gap:14px;text-align:left;padding:18px 20px;min-height:64px;border-radius:20px;border:1.5px solid #DEDDC8;background:#FBF9F0;color:var(--ink);font:inherit;font-weight:500;font-size:16px;cursor:pointer;transition:transform .25s,border-color .25s,background .25s}
+.qz-opt:hover{transform:translateY(-3px);border-color:#2C4434;background:#E4ECD0}
+.qz-opt .qz-emo{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;background:#E4ECD0;color:#2C4434}
+.qz-opt .qz-emo svg{width:20px;height:20px}
+.qz-anim{animation:qzin .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes qzin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.qz-res{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,40px);align-items:center}
+@media (max-width:640px){.qz-res{grid-template-columns:1fr}}
+.qz-res img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:3px solid #E4ECD0;max-width:100%}
+.qz-res-body{display:grid;gap:12px;justify-items:start}
+.qz-res-body h2{font-size:clamp(36px,5vw,56px)}
+.qz-res-body .qz-date{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.qz-res-body p{margin:0;color:var(--muted)}
+.qz-res-body .qz-price{font-family:var(--f-display);font-weight:600;font-size:28px;color:var(--ink)}
+.qz-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.qz-again{background:none;border:0;padding:8px 0;color:var(--amber);font:inherit;font-weight:600;text-decoration:underline;cursor:pointer}
+@media (prefers-reduced-motion: reduce){.qz-anim,.faq-item p{animation:none}.qz-opt:hover{transform:none}}
+
+.reel-photo{object-position:50% 42%;animation:slowzoom 30s ease-in-out infinite alternate;filter:blur(3px) brightness(.92);top:-12px !important;right:-12px !important;bottom:-12px !important;left:-12px !important;width:calc(100% + 24px) !important;height:calc(100% + 24px) !important}
+@keyframes slowzoom{from{transform:scale(1.03)}to{transform:scale(1.12)}}
+@media (prefers-reduced-motion: reduce){.reel-photo{animation:none}}
+
+/* conto alla rovescia */
+.countdown{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;margin-top:clamp(40px,6vw,72px);padding:clamp(22px,3vw,32px) clamp(22px,4vw,44px);border-radius:28px;background:#2C4434;color:#FBF9F0}
+.cd-label{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:600;font-size:clamp(18px,2vw,24px);letter-spacing:-.02em}
+.cd-label a{color:#D3E3B6;text-decoration:none;border-bottom:2px solid currentColor}
+.cd-dot{width:10px;height:10px;border-radius:50%;background:#D3E3B6;box-shadow:0 0 0 0 rgba(211,227,182,.6);animation:cdping 2s ease-out infinite;flex:none}
+@keyframes cdping{0%{box-shadow:0 0 0 0 rgba(211,227,182,.6)}80%,100%{box-shadow:0 0 0 12px rgba(211,227,182,0)}}
+.cd-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.5vw,16px)}
+.cd-grid div{display:grid;justify-items:center;gap:2px;min-width:clamp(64px,8vw,92px);padding:12px 8px;border-radius:18px;background:rgba(251,249,240,.08);border:1px solid rgba(211,227,182,.25)}
+.cd-grid b{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.cd-grid span{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#D3E3B6}
+@media (max-width:560px){.countdown{justify-content:center;text-align:center}.cd-grid{width:100%}.cd-grid div{min-width:0}}
+@media (prefers-reduced-motion: reduce){.cd-dot{animation:none}}
+
+/* esplora: due schede foto */
+.explore2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+@media (max-width:640px){.explore2{grid-template-columns:1fr}}
+.ex-card{position:relative;display:block;aspect-ratio:4/3;max-width:100%;border-radius:28px;overflow:hidden;isolation:isolate;color:#FBF9F0;text-decoration:none;border:3px solid #E4ECD0}
+@media (max-width:640px){.ex-card{aspect-ratio:16/10}}
+.ex-card img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.ex-card::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(180deg,rgba(28,44,34,0) 35%,rgba(28,44,34,.82))}
+.ex-card:hover img{transform:scale(1.06)}
+.ex-body{position:absolute;left:clamp(18px,3vw,32px);right:90px;bottom:clamp(18px,3vw,28px);display:grid;gap:6px}
+.ex-kicker{display:inline-block;justify-self:start;padding:5px 12px;border-radius:999px;background:#D3E3B6;color:#2C4434;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.ex-title{font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em}
+.ex-go{position:absolute;right:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#FBF9F0;color:#2C4434;transition:transform .5s cubic-bezier(.2,.7,.2,1),background .3s}
+.ex-go svg{width:22px;height:22px}
+.ex-card:hover .ex-go{transform:rotate(45deg);background:#D3E3B6}
+@media (prefers-reduced-motion: reduce){.ex-card:hover img,.ex-card:hover .ex-go{transform:none}}
+
+/* chi siamo: nota staccata dalla foto e più spazio sotto il titolo */
+.about-pic{display:grid;justify-items:center;gap:16px}
+.about-pic .hand{position:static !important;background:none !important;padding:0 !important;border-radius:0 !important;box-shadow:none !important;transform:rotate(-3deg) !important;text-align:center;max-width:none;font-size:clamp(34px,4vw,46px) !important}
+.about h2{margin-bottom:22px;padding-bottom:.12em}
+.about h2 + .lead{margin-top:0}
+
+/* contatti: colori coerenti col resto del sito */
+.contact{background:#E4ECD0 !important;color:#2C4434 !important;border:1px solid #D3E3B6}
+.contact .eyebrow{color:#5E7A3A !important;opacity:1 !important}
+.contact h2{color:#2C4434 !important}
+.contact h2 em{color:#5E7A3A !important}
+.contact p{color:#3F5246 !important;opacity:1 !important}
+.contact .handle{color:#3F5246 !important}
+.contact .handle code{color:#2C4434}
+.contact a.ig{color:#2C4434 !important}
+.contact .copy{color:#2C4434;border-color:#2C4434}
+.contact .copy:hover{background:#2C4434;color:#FBF9F0}
+.contact .btn-wa{background:#2C4434 !important;color:#FBF9F0 !important}
+.sun-deco{width:110px;height:auto;color:#2C4434 !important;opacity:1 !important}
+
+/* chi siamo: foto rettangolare con angoli morbidi */
+.about .arch{border-radius:28px !important;aspect-ratio:1/1 !important;border:3px solid #E4ECD0}
+.about .arch img{object-position:50% 38% !important}
+
+/* galleria viaggi passati: schede con mosaico */
+.past{gap:clamp(28px,4vw,48px)}
+.trip-gal{background:#F3F1E3;border:1px solid #E6E5D2;border-radius:32px;padding:clamp(16px,2.4vw,28px);box-shadow:0 30px 60px -48px rgba(44,68,52,.55)}
+.trip-gal .past-head{display:flex;align-items:center;gap:16px;margin:0 0 clamp(16px,2vw,24px);padding:0 4px}
+.ph-num{display:grid;place-items:center;width:52px;height:52px;flex:none;border-radius:50%;background:#2C4434;color:#D3E3B6;font-family:var(--f-display);font-weight:600;font-size:17px}
+.trip-gal h3{font-size:clamp(26px,3vw,38px)}
+.ph-tag{margin:2px 0 0;color:var(--muted);font-size:15px}
+.gal{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;grid-auto-rows:clamp(120px,15vw,200px);grid-auto-flow:dense;gap:clamp(8px,1vw,12px) !important}
+.gal-item{position:relative;border:0 !important;border-radius:18px !important;overflow:hidden;height:100%}
+.gal-item img{width:100%;height:100% !important;aspect-ratio:auto !important;object-fit:cover}
+.gal-item.big{grid-column:span 2;grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+.gal-item.full{grid-column:1 / -1}
+@media (max-width:640px){
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-auto-rows:clamp(110px,32vw,170px)}
+  .gal-item.wide{grid-column:span 1}
+  .gal-item.full{grid-column:span 1}
+  .gal-item.m-full{grid-column:1 / -1;grid-row:span 2}
+}
+.gal-item::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg,transparent 55%,rgba(28,44,34,.45));opacity:0;transition:opacity .35s}
+.gal-zoom{position:absolute;right:10px;bottom:10px;z-index:2;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#FBF9F0;color:#2C4434;opacity:0;transform:scale(.8);transition:opacity .35s,transform .35s}
+.gal-zoom svg{width:18px;height:18px}
+.gal-item:hover::after,.gal-item:focus-visible::after{opacity:1}
+.gal-item:hover .gal-zoom,.gal-item:focus-visible .gal-zoom{opacity:1;transform:none}
+@media (hover:none){.gal-zoom{opacity:.92;transform:none;width:32px;height:32px}}
+
+/* momenti veri: nastro di foto che scorre */
+.moments-reel{position:relative;overflow:hidden;margin-inline:calc(50% - 50vw);padding-block:18px 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.moments-track{display:flex;gap:clamp(12px,1.6vw,20px);width:max-content;padding-inline:4px}
+.moments-reel{overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.moments-reel::-webkit-scrollbar{display:none}
+@keyframes moscroll{to{transform:translateX(-50%)}}
+.mo{position:relative;flex:none;display:block;width:clamp(170px,19vw,250px);aspect-ratio:3/4;border-radius:22px;overflow:hidden;border:4px solid #FBF9F0;box-shadow:0 22px 40px -26px rgba(44,68,52,.55);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.mo:nth-child(odd){transform:rotate(-2deg) translateY(6px)}
+.mo:nth-child(even){transform:rotate(2deg) translateY(-6px)}
+.mo:nth-child(3n){width:clamp(210px,24vw,320px);aspect-ratio:4/3;align-self:center}
+@media (hover:hover){.mo:hover{transform:rotate(0) scale(1.05);z-index:2}}
+.mo img{width:100%;height:100%;object-fit:cover}
+.mo-tag{position:absolute;left:10px;bottom:10px;padding:5px 12px;border-radius:999px;background:#FBF9F0;color:#2C4434;font-size:12px;font-weight:600;letter-spacing:.04em}
+.moments-track{align-items:center}
+
+
+.badge.badge-hot{background:#C8372D !important;color:#FFF7F2 !important}
+.badge.badge-hot i{background:#FFF7F2 !important;animation:hotblink 1.4s ease-in-out infinite}
+@keyframes hotblink{50%{opacity:.25}}
+@media (prefers-reduced-motion: reduce){.badge.badge-hot i{animation:none}}
+
+/* copertina editoriale: foto protagonista, testo in basso a sinistra */
+.hero-reel{align-items:end !important;justify-items:start !important;text-align:left !important;min-height:clamp(600px,92svh,980px) !important}
+.reel-photo{filter:none !important;top:0 !important;right:0 !important;bottom:0 !important;left:0 !important;width:100% !important;height:100% !important;object-position:50% 45% !important}
+.reel-shade{background:linear-gradient(0deg,rgba(18,30,22,.78) 0%,rgba(18,30,22,.38) 38%,rgba(18,30,22,0) 62%),linear-gradient(90deg,rgba(18,30,22,.45) 0%,rgba(18,30,22,0) 55%) !important}
+.hero-reel .hero-text{justify-items:start !important;text-align:left;max-width:1120px;width:100%;padding:0 20px clamp(56px,9vh,104px) !important;margin-inline:auto;gap:18px !important}
+.hero-reel .hero-kicker{font-size:12px !important;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#E4ECD0 !important;display:flex;align-items:center;gap:12px}
+.hero-reel .hero-kicker::before{content:"";width:34px;height:1px;background:currentColor}
+.hero-reel h1{font-size:clamp(46px,8.6vw,128px) !important;line-height:.94 !important;letter-spacing:-.05em !important;max-width:9.5ch !important;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.hero-reel h1 em{display:block;color:#D3E3B6}
+.hero-reel .cta{justify-content:flex-start !important;margin-top:6px}
+.hero-place{position:absolute;right:clamp(20px,4vw,56px);bottom:clamp(120px,15vh,160px);margin:0;display:grid;justify-items:end;gap:4px;color:#FBF9F0;font-size:13px;font-weight:600;letter-spacing:.04em;text-align:right;z-index:2}
+.hero-place span{font-size:11px;font-weight:500;letter-spacing:.18em;color:#D3E3B6}
+.hero-reel .scroll-cue{left:auto !important;right:clamp(20px,4vw,56px);translate:none !important;bottom:22px !important}
+@media (max-width:700px){
+  .hero-place{display:none}
+  .hero-reel{min-height:86svh !important}
+  .hero-reel .hero-text{padding-bottom:64px !important}
+  .hero-reel .scroll-cue{right:50%;translate:50% 0 !important}
+}
+
+/* lightbox */
+.lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:rgba(12,20,15,.96);color:#EEF1E9;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.lb-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+.lb-title{font-family:var(--f-display);font-size:26px;line-height:1}
+.lb-count{font-size:13px;letter-spacing:.1em;opacity:.75;font-variant-numeric:tabular-nums;margin-left:12px;font-family:var(--f-body)}
+.lb-btn{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid rgba(238,241,233,.35);background:rgba(238,241,233,.08);color:inherit;cursor:pointer;flex:none}
+.lb-btn:hover{background:rgba(238,241,233,.18)}
+.lb-btn svg{width:20px;height:20px}
+.lb-track{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;min-height:0}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-slide{flex:0 0 100%;scroll-snap-align:center;display:grid;place-items:center;padding:8px 16px 20px;min-width:0}
+.lb-slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:16px}.lb-next{right:16px}
+@media (max-width:640px){.lb-prev,.lb-next{display:none}}
+@media (prefers-reduced-motion: reduce){.lb-track{scroll-behavior:auto}.gal-item:hover img{transform:none}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,72px);align-items:center}
+@media (max-width:780px){.about{grid-template-columns:1fr;gap:48px}}
+.about .arch{aspect-ratio:3/4;max-width:420px;width:100%}
+.about-pic{position:relative;justify-self:center;width:100%;max-width:420px}
+.about-pic .hand{position:absolute;right:-6px;bottom:-26px;font-size:46px;transform:rotate(-6deg);background:var(--sand);padding:4px 12px;border-radius:8px}
+.about p{margin:0 0 14px;max-width:56ch}
+.points{display:grid;gap:0;margin:28px 0 0;padding:0;list-style:none}
+.points li{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid var(--line);padding-block:14px;color:var(--muted)}
+@media (max-width:420px){.points li{grid-template-columns:1fr;gap:2px}}
+.points b{font-family:var(--f-display);font-weight:400;font-style:italic;font-size:24px;color:var(--ink);line-height:1.1}
+
+/* contacts */
+.contact{position:relative;background:var(--sage);color:var(--ink);border-radius:28px;padding:clamp(48px,6vw,72px) 28px clamp(44px,5vw,64px);display:grid;justify-items:center;text-align:center;gap:22px;overflow:hidden}
+.contact .eyebrow{color:inherit;opacity:.85;justify-content:center}
+.contact h2{color:inherit;max-width:14ch}
+.contact p{margin:0;max-width:46ch;opacity:.9}
+.sun-deco{width:90px;height:56px;color:var(--sea);opacity:.8}
+.rows{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center}
+.handle{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-size:15px}
+.handle code{font-family:var(--f-body);font-weight:700;font-size:17px;user-select:all}
+.copy{background:transparent;border:1px solid currentColor;color:inherit;border-radius:999px;padding:8px 14px;min-height:40px;font:inherit;font-size:14px;cursor:pointer}
+.contact .btn-wa{background:var(--wa);color:var(--onacc)}
+.contact a.ig{color:inherit;font-weight:700}
+
+footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .hero-text > *,.birds,.route path,.scroll-cue i,.ticker div{animation:none}
+    .trip:hover .arch img,.btn:hover,.brand:hover{transform:none}
+}
+
+
+.ex3{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(14px,2vw,24px)}
+@media (max-width:760px){.ex3{grid-template-columns:1fr}}
+.ex3-about,.ex3-contact{position:relative;border-radius:32px;padding:clamp(24px,3.4vw,40px);overflow:hidden;isolation:isolate;min-width:0}
+.ex3-about{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,32px);align-items:center;background:#F3F1E3;border:1px solid #E6E5D2;color:#2C4434;text-decoration:none;box-shadow:0 30px 60px -48px rgba(44,68,52,.55);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.ex3-about:hover{transform:translateY(-4px);box-shadow:0 36px 60px -40px rgba(44,68,52,.6)}
+@media (max-width:520px){.ex3-about{grid-template-columns:1fr}}
+.ex3-face{position:relative;display:block;width:clamp(120px,14vw,170px);height:clamp(120px,14vw,170px);border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px #FBF9F0,0 0 0 7px #DEDDC8;transform:rotate(-3deg)}
+.ex3-face img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.ex3-about:hover .ex3-face img{transform:scale(1.07)}
+.ex3-hi{position:absolute;left:clamp(16px,2vw,24px);top:clamp(30px,4vw,48px);z-index:2;padding:4px 12px;border-radius:999px;background:#D3E3B6;color:#2C4434;font-style:italic;font-size:14px;font-weight:600;transform:rotate(-8deg);box-shadow:0 8px 16px -10px rgba(44,68,52,.5)}
+
+.ex3-txt{display:grid;gap:10px;justify-items:start}
+.ex3-k{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#5E7A3A}
+.ex3-t{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;text-wrap:balance}
+.ex3-p{margin:0;font-size:15px;line-height:1.55;opacity:.85;max-width:38ch}
+.ex3-link{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-weight:700;font-size:15px;border-bottom:2px solid #D3E3B6;padding-bottom:2px}
+.ex3-link svg{width:18px;height:18px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ex3-about:hover .ex3-link svg{transform:translateX(5px)}
+.ex3-contact{display:grid;gap:12px;align-content:center;justify-items:start;background:#2C4434;color:#FBF9F0}
+.ex3-contact{box-shadow:0 30px 60px -48px rgba(44,68,52,.55);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.ex3-contact:hover{transform:translateY(-4px);box-shadow:0 36px 60px -40px rgba(44,68,52,.6)}
+.ex3-sun{transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.ex3-contact:hover .ex3-sun{transform:rotate(-6deg) scale(1.07);opacity:.32}
+.ex3-contact .ex3-k{color:#D3E3B6}
+.ex3-contact .ex3-t em{font-style:normal;color:#D3E3B6}
+.ex3-sun{position:absolute;right:-30px;top:-14px;width:clamp(180px,22vw,260px);color:#D3E3B6;opacity:.22;z-index:-1;transform:rotate(-6deg)}
+.ex3-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.ex3-wa{background:#FBF9F0;color:#2C4434}
+.ex3-ig{background:transparent;color:#FBF9F0;border:1px solid rgba(251,249,240,.55)}
+.ex3-ig:hover{background:rgba(251,249,240,.1)}
+@media (prefers-reduced-motion: reduce){.ex3-contact:hover,.ex3-contact:hover .ex3-sun,.ex3-about:hover,.ex3-about:hover .ex3-face img,.ex3-about:hover .ex3-link svg{transform:none}}
+
+/* galleria da computer: foto intere, senza tagli (masonry) */
+@media (min-width:641px){
+  .gal{display:block !important;columns:3;column-gap:clamp(10px,1.2vw,14px)}
+  .gal-item{display:block !important;width:100%;height:auto !important;margin:0 0 clamp(10px,1.2vw,14px);break-inside:avoid;-webkit-column-break-inside:avoid}
+  .gal-item img{height:auto !important;aspect-ratio:auto !important}
+  .gal.cols4{columns:4}
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="site">
+<div class="progress" aria-hidden="true"></div>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home"><img src="logo-tondo.jpg" alt="Rica Travel, torna all'inizio" width="300" height="300"></a>
+    <nav aria-label="Sezioni">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#partenze">Partenze</a></li>
+        <li><a href="#passati">Viaggi passati</a></li>
+        <li><a href="#chi-siamo">Chi siamo</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page" data-page="home">
+  <div class="hero hero-reel">
+    <div class="reel" aria-hidden="true">
+      <img class="reel-video reel-photo" src="carezza-hero2.jpg" alt="">
+      <div class="reel-shade"></div>
+    </div>
+    <div class="wrap hero-text">
+      <p class="hero-kicker">Esploriamo il mondo, un viaggio alla volta</p>
+      <h1>Viaggi di gruppo per <em>spiriti liberi</em></h1>
+      <div class="cta">
+        <a class="btn btn-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Contattaci su WhatsApp</a>
+        <a class="btn btn-ghost" href="#partenze">Vedi le partenze</a>
+      </div>
+    </div>
+    <p class="hero-place" aria-hidden="true"><span>46.41° N, 11.57° E</span>Lago di Carezza, Dolomiti</p>
+    
+    <a class="scroll-cue" href="#scopri" aria-label="Scorri alle prossime partenze">Scorri<i></i></a>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div>
+      <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+      <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
+    </div>
+  </div>
+
+  <div class="wrap statement">
+    <p class="statement-text">Partiamo da <em>sconosciuti</em>, torniamo a casa <em>amici</em>. Viaggi di gruppo pensati per vivere i posti davvero, senza spendere una fortuna.</p>
+  </div>
+
+  <div class="wrap countdown" id="countdown">
+    <div class="cd-label"><span class="cd-dot"></span>Prossima partenza: <a href="#islanda" id="cd-name">Islanda</a></div>
+    <div class="cd-grid" aria-live="off">
+      <div><b id="cd-d">00</b><span>giorni</span></div>
+      <div><b id="cd-h">00</b><span>ore</span></div>
+      <div><b id="cd-m">00</b><span>minuti</span></div>
+      <div><b id="cd-s">00</b><span>secondi</span></div>
+    </div>
+  </div>
+
+  <div class="wrap home-more">
+    <div class="deps" id="scopri">
+      <div class="deps-head">
+        <div>
+          <p class="eyebrow">Si parte</p>
+          <h2>Prossime <em>partenze</em></h2>
+        </div>
+        <div class="deps-nav">
+          <button class="lb-btn deps-arrow" id="deps-prev" type="button" aria-label="Partenze precedenti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="lb-btn deps-arrow" id="deps-next" type="button" aria-label="Partenze successive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="deps-track" id="deps-track">
+          <article class="dep">
+            <a class="dep-img" href="#islanda" aria-label="Scopri il viaggio in Islanda"><img src="foto-islanda.jpg" alt="Cascata in un canyon verde in Islanda" style="object-position:50% 40%"><span class="badge badge-hot"><i></i>Ultimo posto disponibile</span></a>
+            <div class="dep-body">
+              <h3><a class="dep-title" href="#islanda">Islanda</a></h3>
+              <p>9 – 14 novembre 2026</p>
+              <p class="dep-price">777 €</p>
+              <a class="btn btn-line" href="#islanda">Scopri il viaggio</a>
+              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+            </div>
+          </article>
+          <article class="dep">
+            <a class="dep-img" href="#halloween" aria-label="Scopri il viaggio: Weekend Halloween"><img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera"><span class="badge badge-hot"><i></i>Ultimi 2 posti</span></a>
+            <div class="dep-body">
+              <h3><a class="dep-title" href="#halloween">Weekend Halloween</a></h3>
+              <p>30 ottobre – 1 novembre 2026</p>
+              <p class="dep-price">297 €</p>
+              <a class="btn btn-line" href="#halloween">Scopri il viaggio</a>
+              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+            </div>
+          </article>
+          <article class="dep">
+            <a class="dep-img" href="#natale" aria-label="Scopri il viaggio: Mercatini di Natale"><img style="object-position:50% 30%" src="natale-new.jpg" alt="Luci natalizie a forma di angeli sopra una strada con autobus rossi"><span class="badge"><i></i>Posti disponibili</span></a>
+            <div class="dep-body">
+              <h3><a class="dep-title" href="#natale">Mercatini di Natale</a></h3>
+              <p>26 – 29 novembre 2026 · Londra</p>
+              <p class="dep-price">397 €</p>
+              <a class="btn btn-line" href="#natale">Scopri il viaggio</a>
+              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+            </div>
+          </article>
+          <article class="dep">
+            <a class="dep-img" href="#sharm" aria-label="Scopri il viaggio: Sharm el-Sheikh"><img style="object-position:50% 40%" src="sharm-new.jpg" alt="Spiaggia di Sharm con ombrelloni colorati e il mare turchese del Mar Rosso"><span class="badge"><i></i>Posti disponibili</span></a>
+            <div class="dep-body">
+              <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
+              <p>11 – 16 gennaio 2027</p>
+              <p class="dep-price">687 €</p>
+              <a class="btn btn-line" href="#sharm">Scopri il viaggio</a>
+              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+            </div>
+          </article>
+      </div>
+    </div>
+    <div class="how">
+      <div>
+        <p class="eyebrow">Come funziona</p>
+        <h2>Partire è <em>semplice</em></h2>
+      </div>
+      <ol class="steps">
+        <li><b>Scegli il viaggio</b>Guarda le prossime partenze e trova quella che fa per te.</li>
+        <li><b>Scrivici su WhatsApp</b>Ti mandiamo programma, prezzo e tutto quello che è incluso.</li>
+        <li><b>Prenota il volo e parti</b>Prenoti il volo in autonomia e il gruppo si crea in viaggio.</li>
+      </ol>
+    </div>
+    <div class="moments">
+      <div class="moments-head">
+        <div>
+          <p class="eyebrow">Dai nostri viaggi</p>
+          <h2>Momenti <em>veri</em></h2>
+        </div>
+        <a class="btn btn-line" href="#passati">Vedi i viaggi passati</a>
+      </div>
+      <div class="moments-reel">
+        <div class="moments-track"><a class="mo" href="#passati"><img src="marocco-quad.jpg" alt="Foto dal viaggio in Marocco" style="object-position:50% 70%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati"><img src="thai-maya.jpg" alt="Foto dal viaggio in Thailandia" style="object-position:50% 30%"><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati"><img src="kenya-amiche.jpg" alt="Foto dal viaggio in Kenya"><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati"><img src="slo-lago.jpg" alt="Foto dal viaggio in Slovenia"><span class="mo-tag">Slovenia</span></a><a class="mo" href="#passati"><img src="marocco-surf.jpg" alt="Foto dal viaggio in Marocco" style="object-position:50% 60%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati"><img src="thai-elefante.jpg" alt="Foto dal viaggio in Thailandia"><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati"><img src="kenya-leonessa.jpg" alt="Foto dal viaggio in Kenya"><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati"><img src="slo-van.jpg" alt="Foto dal viaggio in Slovenia"><span class="mo-tag">Slovenia</span></a><a class="mo" href="#passati"><img src="thai-tramonto.jpg" alt="Foto dal viaggio in Thailandia" style="object-position:50% 35%"><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati"><img src="marocco-scogli.jpg" alt="Foto dal viaggio in Marocco" style="object-position:50% 60%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati"><img src="kenya-jeep.jpg" alt="Foto dal viaggio in Kenya"><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati"><img src="slo-bled.jpg" alt="Foto dal viaggio in Slovenia" style="object-position:50% 65%"><span class="mo-tag">Slovenia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="marocco-quad.jpg" alt="" style="object-position:50% 70%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="thai-maya.jpg" alt="" style="object-position:50% 30%"><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="kenya-amiche.jpg" alt=""><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="slo-lago.jpg" alt=""><span class="mo-tag">Slovenia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="marocco-surf.jpg" alt="" style="object-position:50% 60%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="thai-elefante.jpg" alt=""><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="kenya-leonessa.jpg" alt=""><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="slo-van.jpg" alt=""><span class="mo-tag">Slovenia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="thai-tramonto.jpg" alt="" style="object-position:50% 35%"><span class="mo-tag">Thailandia</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="marocco-scogli.jpg" alt="" style="object-position:50% 60%"><span class="mo-tag">Marocco</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="kenya-jeep.jpg" alt=""><span class="mo-tag">Kenya</span></a><a class="mo" href="#passati" aria-hidden="true" tabindex="-1"><img src="slo-bled.jpg" alt="" style="object-position:50% 65%"><span class="mo-tag">Slovenia</span></a></div>
+      </div>
+    </div>
+    <a class="quiz-cta" href="#quiz">
+      <span class="quiz-cta-text"><span class="eyebrow">Non sai quale scegliere?</span><b>Fai il quiz e scopri il viaggio <em>perfetto per te</em></b></span>
+      <span class="btn btn-wa">Inizia il quiz</span>
+    </a>
+    <div class="faq">
+      <div>
+        <p class="eyebrow">Domande frequenti</p>
+        <h2>Hai qualche <em>dubbio?</em></h2>
+        <p class="lead">Le risposte alle domande che ci fanno più spesso. Per tutto il resto, scrivici su WhatsApp.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item"><summary><span>Posso partire da solo/a?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Certo, anzi: i nostri viaggi sono pensati proprio per chi non sa mai con chi partire. Arrivi da solo/a e il gruppo si crea in viaggio.</p></details>
+        <details class="faq-item"><summary><span>Quante persone ci sono in un gruppo?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Di solito si parte da un gruppo di 10 persone, fino a un massimo di 20.</p></details>
+        <details class="faq-item"><summary><span>C'è un'età minima?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sì, per partecipare devi avere almeno 18 anni.</p></details>
+        <details class="faq-item"><summary><span>Come si prenota?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Basta scriverci su WhatsApp: ti mandiamo tutte le informazioni e poi blocchi il tuo posto con un acconto.</p></details>
+        <details class="faq-item"><summary><span>Come si paga?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Ti inviamo un link di pagamento, semplice e veloce.</p></details>
+        <details class="faq-item"><summary><span>I voli sono inclusi?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No, i voli sono esclusi e si prenotano in autonomia. Ti consigliamo noi i voli migliori e ti diamo assistenza in tutto.</p></details>
+        <details class="faq-item"><summary><span>Dove si dorme?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Si dorme in camere condivise con gli altri partecipanti. Se parti con un amico o un'amica potete chiedere di stare in camera insieme.</p></details>
+        <details class="faq-item"><summary><span>Durante il viaggio siamo da soli?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No, con il gruppo c'è sempre un nostro coordinatore che segue il viaggio dall'inizio alla fine.</p></details>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Esplora</p>
+      <div class="ex3">
+        <a class="ex3-about" href="#chi-siamo">
+          <span class="ex3-face"><img src="chi-siamo.jpg" alt="" style="object-position:50% 32%"></span>
+          <span class="ex3-hi" aria-hidden="true">piacere!</span>
+          <span class="ex3-txt">
+            <span class="ex3-k">Chi siamo</span>
+            <span class="ex3-t">Dietro ogni viaggio c'è una persona vera</span>
+            <span class="ex3-p">Come è nato Ricatravel, come viaggiamo e perché lo facciamo.</span>
+            <span class="ex3-link">Leggi la nostra storia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </span>
+        </a>
+        <div class="ex3-contact">
+          <svg class="ex3-sun" viewBox="0 0 300 160" aria-hidden="true"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M110,110 A40,40 0 0 1 190,110"/><line x1="200.2" y1="96.5" x2="238.9" y2="86.2"/><line x1="186.8" y1="73.2" x2="215" y2="45"/><line x1="163.5" y1="59.8" x2="173.8" y2="21.1"/><line x1="150" y1="58" x2="150" y2="8"/><line x1="136.5" y1="59.8" x2="126.2" y2="21.1"/><line x1="113.2" y1="73.2" x2="85" y2="45"/><line x1="99.8" y1="96.5" x2="61.1" y2="86.2"/><path d="M40,120 C95,100 130,134 180,116 S250,104 262,110"/><path d="M66,136 C112,120 158,148 204,130 S246,122 256,126"/></g></svg>
+          <span class="ex3-k">Contatti</span>
+          <h3 class="ex3-t">Hai una domanda? <em>Scrivici.</em></h3>
+          <p class="ex3-p">Su date, prezzi, posti liberi o solo per conoscerci: rispondiamo noi, non un bot.</p>
+          <div class="ex3-btns">
+            <a class="btn ex3-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>WhatsApp</a>
+            <a class="btn ex3-ig" href="https://www.instagram.com/ricatravel.it/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <section id="partenze" class="page" data-page="partenze" hidden>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Si parte</p>
+          <h2>Prossime <em>partenze</em></h2>
+          <p class="lead">I voli di andata e ritorno sono esclusi e si prenotano in autonomia.</p>
+        </div>
+        <p class="hand">posti limitati, scrivici presto!</p>
+      </div>
+
+      <div class="trows">
+        <article class="trow">
+          <a class="trow-img" href="#islanda" aria-label="Scopri il viaggio: Islanda">
+            <img src="foto-islanda.jpg" alt="Cascata in un canyon verde in Islanda" style="object-position:50% 40%">
+            <span class="badge badge-hot"><i></i>Ultimo posto disponibile</span>
+          </a>
+          <div class="trow-body">
+            <p class="trow-num">01</p>
+            <h3><a class="dep-title" href="#islanda">Islanda</a></h3>
+            <p class="trow-dates">9 / 14 novembre 2026</p>
+            <p class="trow-desc">Un roadtrip tra cascate, spiagge nere e campi geotermici: da Reykjavik al Golden Circle, lungo la costa sud fino alla penisola di Snæfellsnes, con un bagno nel fiume caldo di Reykjadalur.</p>
+            <ul class="trow-tags"><li>Roadtrip</li><li>Trekking</li><li>Cascate</li><li>Sorgenti calde</li></ul>
+            <div class="trow-foot">
+              <p class="trow-price">777 €</p>
+              <div class="trow-btns">
+                <a class="btn btn-line" href="#islanda">Scopri il viaggio</a>
+                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="trow flip">
+          <a class="trow-img" href="#halloween" aria-label="Scopri il viaggio: Weekend Halloween">
+            <img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera">
+            <span class="badge badge-hot"><i></i>Ultimi 2 posti</span>
+          </a>
+          <div class="trow-body">
+            <p class="trow-num">02</p>
+            <h3><a class="dep-title" href="#halloween">Weekend Halloween</a></h3>
+            <p class="trow-dates">30 ottobre / 1 novembre 2026</p>
+            <p class="trow-desc">Un weekend in villa vicino alle Cinque Terre, con piscina, sauna e jacuzzi, per festeggiare Halloween con un gruppo nuovo.</p>
+            <ul class="trow-tags"><li>Villa</li><li>Piscina</li><li>Sauna e jacuzzi</li><li>Festa</li></ul>
+            <div class="trow-foot">
+              <p class="trow-price">297 €</p>
+              <div class="trow-btns">
+                <a class="btn btn-line" href="#halloween">Scopri il viaggio</a>
+                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="trow">
+          <a class="trow-img" href="#natale" aria-label="Scopri il viaggio: Mercatini di Natale">
+            <img style="object-position:50% 30%" src="natale-new.jpg" alt="Luci natalizie a forma di angeli sopra una strada con autobus rossi">
+            <span class="badge"><i></i>Posti disponibili</span>
+          </a>
+          <div class="trow-body">
+            <p class="trow-num">03</p>
+            <h3><a class="dep-title" href="#natale">Mercatini di Natale</a></h3>
+            <p class="trow-dates">26 / 29 novembre 2026 · Londra</p>
+            <p class="trow-desc">Quattro giorni a Londra tra luci di Natale, mercatini e street food, per entrare nell'atmosfera delle feste.</p>
+            <ul class="trow-tags"><li>Londra</li><li>Mercatini</li><li>Luci di Natale</li></ul>
+            <div class="trow-foot">
+              <p class="trow-price">397 €</p>
+              <div class="trow-btns">
+                <a class="btn btn-line" href="#natale">Scopri il viaggio</a>
+                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="trow flip">
+          <a class="trow-img" href="#sharm" aria-label="Scopri il viaggio: Sharm el-Sheikh">
+            <img style="object-position:50% 40%" src="sharm-new.jpg" alt="Spiaggia di Sharm con ombrelloni colorati e il mare turchese del Mar Rosso">
+            <span class="badge"><i></i>Posti disponibili</span>
+          </a>
+          <div class="trow-body">
+            <p class="trow-num">04</p>
+            <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
+            <p class="trow-dates">11 / 16 gennaio 2027</p>
+            <p class="trow-desc">Sole a gennaio sul Mar Rosso: spiagge, snorkeling tra i coralli e serate in compagnia.</p>
+            <ul class="trow-tags"><li>Mare</li><li>Snorkeling</li><li>Sole d'inverno</li></ul>
+            <div class="trow-foot">
+              <p class="trow-price">687 €</p>
+              <div class="trow-btns">
+                <a class="btn btn-line" href="#sharm">Scopri il viaggio</a>
+                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="islanda" class="page trip-page" data-page="islanda" hidden>
+    <div class="wrap">
+      <a class="back" href="#partenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Tutte le partenze</a>
+      <div class="tp-hero">
+        <img src="foto-islanda.jpg" alt="Cascata in un canyon verde in Islanda" style="object-position:50% 45%">
+        <div class="tp-hero-text">
+          <span class="badge badge-hot"><i></i>Ultimo posto disponibile</span>
+          <h1>Islanda</h1>
+          <p>9 – 14 novembre 2026 · 6 giorni · roadtrip</p>
+        </div>
+      </div>
+
+      <div class="tp-grid">
+        <div class="tp-main">
+          <div class="tp-intro">
+            <p class="eyebrow">Il viaggio</p>
+            <h2>Un roadtrip tra <em>fuoco e ghiaccio</em></h2>
+            <p class="lead">Sei giorni in auto per scoprire l'Islanda più vera: cascate che si sentono da lontano, spiagge nere, campi di lava coperti di muschio e sorgenti calde in mezzo alla natura. Si parte da Reykjavik e si gira l'isola in gruppo, tra trekking, panorami e serate insieme. E quando cala la notte, il cielo potrebbe regalarci lo spettacolo più bello di tutti: l'aurora boreale che danza sopra le nostre teste.</p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Cosa faremo</p>
+            <ol class="stops">
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Reykjavik</h3><p>Ci ritroviamo nella capitale il pomeriggio del 9 novembre: case colorate, porto e prima serata tutti insieme.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Golden Circle</h3><p>Il giro più famoso dell'isola, tra il geyser che erutta, cascate enormi e la faglia tra due continenti.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Costa sud</h3><p>Cascate da attraversare a piedi, ghiacciai all'orizzonte e la spiaggia di sabbia nera con le colonne di basalto.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Penisola di Snæfellsnes</h3><p>Montagne a picco sul mare, villaggi di pescatori e panorami che sembrano usciti da un film.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Reykjadalur</h3><p>Un trekking nella valle del vapore fino al fiume caldo, dove ci si fa il bagno immersi nella natura.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Caccia all'aurora boreale</h3><p>Di sera usciamo in auto lontano dalle luci della città per cercarla, se il meteo ci assiste.</p></div></li>
+            </ol>
+          </div>
+
+          <div class="tp-incl">
+            <div class="incl-box yes">
+              <h3>Cosa è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Alloggi</b>Strutture selezionate con cucina a disposizione, comode per muoversi sull'isola.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Auto a noleggio</b>Completamente assicurata, per tutto il roadtrip.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Assicurazione medica</b>Per viaggiare tranquilli dall'inizio alla fine.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Coordinatore</b>Sempre con il gruppo, dall'inizio alla fine del viaggio.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Itinerario su misura</b>Un programma pensato da noi per vivere al meglio la destinazione.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gruppo WhatsApp</b>Con assistenza 24/7, prima e durante il viaggio.</span></li></ul>
+            </div>
+            <div class="incl-box no">
+              <h3>Cosa non è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Voli</b>Andata e ritorno si prenotano in autonomia.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Cibo</b>Pasti e spesa sono a parte.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Carburante</b>Si divide tra i partecipanti.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Spese extra</b>Ingressi facoltativi e souvenir.</span></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="tp-book">
+          <p class="eyebrow">Prenota il tuo posto</p>
+          <dl>
+            <div><dt>Date</dt><dd>9 – 14 novembre 2026</dd></div>
+            <div><dt>Prezzo</dt><dd>777 €</dd></div>
+          </dl>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="halloween" class="page trip-page" data-page="halloween" hidden>
+    <div class="wrap">
+      <a class="back" href="#partenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Tutte le partenze</a>
+      <div class="tp-hero">
+        <img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera">
+        <div class="tp-hero-text">
+          <span class="badge badge-hot"><i></i>Ultimi 2 posti</span>
+          <h1>Weekend Halloween</h1>
+          <p>30 ottobre – 1 novembre 2026 · 3 giorni · villa a Sarzana</p>
+        </div>
+      </div>
+
+      <div class="tp-grid">
+        <div class="tp-main">
+          <div class="tp-intro">
+            <p class="eyebrow">Il viaggio</p>
+            <h2>Halloween in villa, <em>tra Apuane e Cinque Terre</em></h2>
+            <p class="lead">Un weekend in una villa esclusiva a Sarzana, tra le Alpi Apuane e le Cinque Terre, con piscina riscaldata, jacuzzi e sauna. Di giorno trekking, sport e mare nel Golfo dei Poeti, la sera la villa si trasforma per la festa di Halloween. Arrivi senza conoscere nessuno e riparti con un gruppo di amici.</p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Cosa faremo</p>
+            <ol class="stops">
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>La villa a Sarzana</h3><p>Ci ritroviamo in villa: piscina riscaldata, jacuzzi e sauna per iniziare il weekend nel modo giusto.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Trekking e sport</h3><p>Sentieri, sfide sportive e un po' di adrenalina, tutti insieme.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Lerici e il Golfo dei Poeti</h3><p>Ci spostiamo sulla costa per scoprire Lerici, tra attività e tempo libero sul mare.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Halloween Night</h3><p>Rientro al tramonto e festa a tema in villa: costumi, musica e giochi fino a tarda notte.</p></div></li>
+            </ol>
+          </div>
+
+          <div class="tp-incl">
+            <div class="incl-box yes">
+              <h3>Cosa è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Villa</b>Soggiorno nella villa a Sarzana con piscina riscaldata, jacuzzi e sauna.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Villa a tema</b>Decorazioni, luci e atmosfera di Halloween in ogni stanza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Halloween Party</b>Musica, giochi e costumi: la festa è tutta inclusa.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gift ESN</b>Barrette proteiche e prodotti Elite Sports Nutrition in regalo.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Coordinatore</b>Sempre con il gruppo, dall'inizio alla fine del viaggio.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Itinerario su misura</b>Un programma pensato da noi per vivere al meglio la destinazione.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gruppo WhatsApp</b>Con assistenza 24/7, prima e durante il viaggio.</span></li></ul>
+            </div>
+            <div class="incl-box no">
+              <h3>Cosa non è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Pasti</b>Pasti e spese personali sono a parte.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Attività extra</b>Attività facoltative fuori programma.</span></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="tp-book">
+          <p class="eyebrow">Prenota il tuo posto</p>
+          <dl>
+            <div><dt>Date</dt><dd>30 ottobre – 1 novembre 2026</dd></div>
+            <div><dt>Prezzo</dt><dd>297 €</dd></div>
+          </dl>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="natale" class="page trip-page" data-page="natale" hidden>
+    <div class="wrap">
+      <a class="back" href="#partenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Tutte le partenze</a>
+      <div class="tp-hero">
+        <img style="object-position:50% 30%" src="natale-new.jpg" alt="Luci natalizie a forma di angeli sopra una strada con autobus rossi">
+        <div class="tp-hero-text">
+          <span class="badge"><i></i>Posti disponibili</span>
+          <h1>Mercatini di Natale</h1>
+          <p>26 – 29 novembre 2026 · 4 giorni · Londra</p>
+        </div>
+      </div>
+
+      <div class="tp-grid">
+        <div class="tp-main">
+          <div class="tp-intro">
+            <p class="eyebrow">Il viaggio</p>
+            <h2>Londra, quando si accende <em>il Natale</em></h2>
+            <p class="lead">A fine novembre Londra cambia faccia: le strade si riempiono di luci, le piazze di alberi giganti e l'aria profuma di vin brulé e caldarroste. Noi la vivremo così, passeggiando tra mercatini e casette di legno, scoprendo i luoghi simbolo della città e fermandoci a ogni banco di street food che ci ispira. Quattro giorni per entrare nello spirito delle feste e tornare a casa con un gruppo di amici nuovi.</p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Cosa faremo</p>
+            <ol class="stops">
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Le luci del West End</h3><p>Regent Street con i suoi angeli luminosi, Oxford Street e le vie colorate di Carnaby: la Londra più scintillante di Natale.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Covent Garden</h3><p>L'albero gigante, il mercato coperto addobbato e gli artisti di strada che animano la piazza.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Winter Wonderland</h3><p>Il grande villaggio di Natale di Hyde Park, tra giostre, casette di legno e vin brulé.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Lungo il Tamigi</h3><p>Big Ben, London Eye e Tower Bridge, con una sosta tra le bancarelle del mercatino di Natale sulla riva del fiume.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Borough Market e Camden</h3><p>Due dei mercati più famosi della città, perfetti per perdersi tra street food da tutto il mondo e negozietti vintage.</p></div></li>
+            </ol>
+          </div>
+
+          <div class="tp-incl">
+            <div class="incl-box yes">
+              <h3>Cosa è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Alloggio</b>Tre notti in camere condivise, in zona comoda per muoversi in città.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Ingresso a Winter Wonderland</b>Il villaggio di Natale di Hyde Park, tutti insieme.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Assicurazione medica</b>Per viaggiare tranquilli dall'inizio alla fine.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Coordinatore</b>Sempre con il gruppo, dall'inizio alla fine del viaggio.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Itinerario su misura</b>Un programma pensato da noi per vivere al meglio la destinazione.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gruppo WhatsApp</b>Con assistenza 24/7, prima e durante il viaggio.</span></li></ul>
+            </div>
+            <div class="incl-box no">
+              <h3>Cosa non è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Voli</b>Andata e ritorno si prenotano in autonomia.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Metro e bus</b>Si paga in città con carta contactless.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Pasti</b>Pasti e spese personali sono a parte.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Attività extra</b>Ingressi e attività facoltative.</span></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="tp-book">
+          <p class="eyebrow">Prenota il tuo posto</p>
+          <dl>
+            <div><dt>Date</dt><dd>26 – 29 novembre 2026</dd></div>
+            <div><dt>Prezzo</dt><dd>397 €</dd></div>
+          </dl>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="sharm" class="page trip-page" data-page="sharm" hidden>
+    <div class="wrap">
+      <a class="back" href="#partenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Tutte le partenze</a>
+      <div class="tp-hero">
+        <img style="object-position:50% 40%" src="sharm-new.jpg" alt="Spiaggia di Sharm con ombrelloni colorati e il mare turchese del Mar Rosso">
+        <div class="tp-hero-text">
+          <span class="badge"><i></i>Posti disponibili</span>
+          <h1>Sharm el-Sheikh</h1>
+          <p>11 – 16 gennaio 2027 · 6 giorni · mare e deserto</p>
+        </div>
+      </div>
+
+      <div class="tp-grid">
+        <div class="tp-main">
+          <div class="tp-intro">
+            <p class="eyebrow">Il viaggio</p>
+            <h2>L'inverno lo passiamo <em>al sole</em></h2>
+            <p class="lead">Mentre in Italia si gela, noi saremo con i piedi nella sabbia e la maschera in faccia. Sharm el-Sheikh è il punto in cui il deserto incontra il Mar Rosso: un'acqua così trasparente che sembra finta, coralli pieni di vita a pochi metri dalla riva e tramonti che colorano le montagne del Sinai. Sei giorni di sole, avventura e risate, in un hotel in pensione completa dove l'unico pensiero sarà scegliere tra lettino e snorkeling.</p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Cosa faremo</p>
+            <ol class="stops">
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Snorkeling tra i coralli</h3><p>Basta mettere la testa sott'acqua per ritrovarsi in un acquario: pesci pagliaccio, tartarughe e coralli di ogni colore.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Una giornata in barca</h3><p>Si salpa al mattino verso le acque più blu, tuffi dalla prua e musica a bordo fino al rientro.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Il deserto in quad</h3><p>Motori accesi e via tra dune e canyon, con la polvere alle spalle e il sole che tramonta sul Sinai.</p></div></li>
+            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Sole, relax e serate</h3><p>Pomeriggi in spiaggia a ricaricarsi e sere a ridere tutti insieme, come se ci conoscessimo da sempre.</p></div></li>
+            </ol>
+          </div>
+
+          <div class="tp-incl">
+            <div class="incl-box yes">
+              <h3>Cosa è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Hotel in pensione completa</b>Hotel selezionato in posizione strategica, con tutti i pasti inclusi.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Escursione in barca</b>La giornata sul Mar Rosso con snorkeling.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Escursione in quad</b>L'uscita nel deserto in quad.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Coordinatore</b>Sempre con il gruppo, dall'inizio alla fine del viaggio.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Itinerario su misura</b>Un programma pensato da noi per vivere al meglio la destinazione.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gruppo WhatsApp</b>Con assistenza 24/7, prima e durante il viaggio.</span></li></ul>
+            </div>
+            <div class="incl-box no">
+              <h3>Cosa non è incluso</h3>
+              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Voli</b>Andata e ritorno si prenotano in autonomia.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Attività extra</b>Escursioni facoltative fuori programma.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Spese personali</b>Souvenir, shopping e piccoli sfizi.</span></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="tp-book">
+          <p class="eyebrow">Prenota il tuo posto</p>
+          <dl>
+            <div><dt>Date</dt><dd>11 – 16 gennaio 2027</dd></div>
+            <div><dt>Prezzo</dt><dd>687 €</dd></div>
+          </dl>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="page" data-page="quiz" hidden>
+    <div class="wrap quiz-wrap">
+      <a class="back" href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Torna alla home</a>
+      <div class="quiz-card" id="quiz-card" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="passati" class="page" data-page="passati" hidden>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Ricordi</p>
+          <h2>Viaggi <em>passati</em></h2>
+          <p class="lead">Qualche scatto dai viaggi che abbiamo già fatto insieme.</p>
+        </div>
+      </div>
+
+      <div class="dest" aria-label="Scegli un viaggio">
+        <button class="dest-tile" type="button" data-go="gal-slovenia"><img src="slo-lago.jpg" alt="" style="object-position:50% 45%"><span>Slovenia</span></button>
+        <button class="dest-tile" type="button" data-go="gal-thailandia"><img src="thai-barca.jpg" alt=""><span>Thailandia</span></button>
+        <button class="dest-tile" type="button" data-go="gal-kenya"><img src="kenya-leonessa.jpg" alt=""><span>Kenya</span></button>
+        <button class="dest-tile" type="button" data-go="gal-marocco"><img src="marocco-surf.jpg" alt="" style="object-position:50% 60%"><span>Marocco</span></button>
+      </div>
+
+      <div class="past">
+        <div class="trip-gal" id="gal-slovenia">
+          <div class="past-head"><div><h3>Slovenia</h3><p class="ph-tag">In van tra laghi smeraldo e montagne</p></div></div>
+          <div class="gal">
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-lago.jpg" alt="Lago verde smeraldo sotto le montagne in autunno"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-gruppo.jpg" alt="Foto di gruppo in cerchio dal basso" style="object-position:50% 50%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-van.jpg" alt="Camper parcheggiati pronti alla partenza"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-bled.jpg" alt="Barche di legno sul lago di Bled" style="object-position:50% 65%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-pasta.jpg" alt="Il gruppo che prepara la pasta di sera"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="slo-selfie.jpg" alt="Due viaggiatori sorridenti in camper" style="object-position:50% 40%"></button>
+          </div>
+        </div>
+        <div class="trip-gal" id="gal-thailandia">
+          <div class="past-head"><div><h3>Thailandia</h3><p class="ph-tag">Isole, elefanti e tramonti sul mare</p></div></div>
+          <div class="gal">
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-barca.jpg" alt="Prua di una barca a coda lunga decorata con fiori davanti a una spiaggia bianca"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-maya.jpg" alt="Viaggiatrice felice a braccia alzate nel mare turchese di Maya Bay" style="object-position:50% 30%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-spiaggia.jpg" alt="Gambe abbronzate sulla sabbia davanti a faraglioni e barche"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-elefante.jpg" alt="Viaggiatrice che accarezza un elefante nel fiume"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-cocco.jpg" alt="Viaggiatrice su un'altalena con una noce di cocco" style="object-position:50% 40%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-piscina.jpg" alt="Piscina illuminata al tramonto tra le palme"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-strada.jpg" alt="Ristorante in legno rosso lungo una strada con palme al tramonto"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="thai-tramonto.jpg" alt="Viaggiatrice sorridente in spiaggia al tramonto" style="object-position:50% 35%"></button>
+          </div>
+        </div>
+        <div class="trip-gal" id="gal-kenya">
+          <div class="past-head"><div><h3>Kenya</h3><p class="ph-tag">Safari nella savana e spiagge bianche</p></div></div>
+          <div class="gal">
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-jeep.jpg" alt="Il gruppo seduto sul cofano della jeep da safari"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-cappello.jpg" alt="Viaggiatrice con cappello da safari dentro la jeep" style="object-position:50% 35%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-pista.jpg" alt="Jeep da safari su una pista di terra rossa nella savana"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-leonessa.jpg" alt="Leonessa che sbadiglia accanto alle compagne"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-amiche.jpg" alt="Tre amiche che ridono in piedi sulla jeep da safari"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="kenya-spiaggia.jpg" alt="Sei amiche sedute sulla sabbia bianca in riva al mare"></button>
+          </div>
+        </div>
+        <div class="trip-gal" id="gal-marocco">
+          <div class="past-head"><div><h3>Marocco</h3><p class="ph-tag">Surf, quad e onde dell'oceano</p></div></div>
+          <div class="gal">
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-quad-gruppo.jpg" alt="Il gruppo con i caschi da quad in cima alla collina al tramonto" style="object-position:50% 60%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-quad.jpg" alt="Il gruppo sui quad in fila davanti al sole che tramonta sul mare" style="object-position:50% 70%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-surf.jpg" alt="Il gruppo in muta sulla spiaggia accanto alle tavole da surf" style="object-position:50% 60%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-surfshop.jpg" alt="Due viaggiatrici sui gradini di un surf shop colorato" style="object-position:50% 60%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-scogli.jpg" alt="Due amiche sugli scogli davanti alle onde" style="object-position:50% 65%"></button>
+              <button class="gal-item" type="button" aria-label="Ingrandisci foto"><img src="marocco-selfie.jpg" alt="Selfie di tre amici davanti all'oceano"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chi-siamo" class="page" data-page="chi-siamo" hidden>
+    <div class="wrap about">
+      <div class="about-pic">
+        <div class="arch"><img src="chi-siamo.jpg" alt="La fondatrice di Ricatravel sorridente davanti al Lago di Carezza e al Latemar" style="object-position:50% 40%"></div>
+        <span class="hand">ci vediamo in viaggio!</span>
+      </div>
+      <div>
+        <p class="eyebrow">Chi siamo</p>
+        <h2>Natura, avventura e <em>voglia di muoversi</em></h2>
+        <p class="lead">Dietro Ricatravel ci sono persone che non riescono a stare ferme: amiamo la montagna all'alba, il mare al tramonto e quella sensazione di stanchezza bella dopo una giornata passata all'aria aperta.</p>
+        <p>Tutto è nato così, zaino in spalla, tra trekking, van senza bagno e laghi da cartolina. Ci siamo resi conto che i viaggi più belli sono quelli fatti con persone che condividono la stessa energia, anche se fino al giorno prima erano sconosciute. Per questo organizziamo viaggi di gruppo dove ci si muove, si esplora e si vive ogni posto da vicino, senza spendere una fortuna.</p>
+        <ul class="points">
+          <li><b>Natura</b>Montagne, laghi, mare e posti dove respirare davvero.</li>
+          <li><b>Avventura</b>Trekking, roadtrip, snorkeling: ogni viaggio ha la sua dose di adrenalina.</li>
+          <li><b>Movimento</b>Ci piace camminare, nuotare, esplorare: niente vacanze sul divano.</li>
+          <li><b>Persone</b>Parti da sconosciuto, torni a casa con un gruppo di amici.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="page" data-page="contatti" hidden>
+    <div class="wrap">
+      <div class="contact">
+        <svg class="sun-deco" viewBox="0 0 120 80" aria-hidden="true">
+          <g fill="currentColor">
+            <path d="M34 66c1-15 12-27 26-27s25 12 26 27c-2 1-4 1-5 0-1-12-10-21-21-21S40 54 39 66c-1 1-4 1-5 0z"/>
+            <path d="M58.6 6.5c1-1 2.6-1 3.2 0l-.6 20c-.3 1.4-1.9 1.4-2.2 0z"/>
+            <path d="M36.2 13.4c.9-.8 2.3-.6 2.8.4l7.2 15.8c.3 1.2-1 2-1.9 1.2L35.8 15.4c-.4-.7-.2-1.5.4-2z"/>
+            <path d="M83.8 13.4c-.9-.8-2.3-.6-2.8.4l-7.2 15.8c-.3 1.2 1 2 1.9 1.2l8.5-15.4c.4-.7.2-1.5-.4-2z"/>
+            <path d="M18.6 33.2c.5-1 1.8-1.3 2.7-.6l13.5 9.6c.8.9.1 2.2-1 1.9l-14.4-8.6c-.9-.5-1.2-1.5-.8-2.3z"/>
+            <path d="M101.4 33.2c-.5-1-1.8-1.3-2.7-.6l-13.5 9.6c-.8.9-.1 2.2 1 1.9l14.4-8.6c.9-.5 1.2-1.5.8-2.3z"/>
+            <path d="M10 56.5c0-1.1.9-1.9 2-1.8l16.5 1.4c1.2.3 1.2 1.9 0 2.1L12 59.4c-1.1.1-2-.8-2-1.9z"/>
+            <path d="M110 56.5c0-1.1-.9-1.9-2-1.8l-16.5 1.4c-1.2.3-1.2 1.9 0 2.1l16.5 1.2c1.1.1 2-.8 2-1.9z"/>
+          </g>
+        </svg>
+        <p class="eyebrow">Contatti</p>
+        <h2>Hai visto un viaggio <em>che ti piace?</em></h2>
+        <p>Scrivici su WhatsApp per disponibilità, prezzi e dettagli. Su Instagram trovi foto e video dei viaggi.</p>
+        <div class="rows">
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>
+            Apri WhatsApp
+          </a>
+        </div>
+        <div class="handle">WhatsApp <code id="wa-num">+39 350 931 8685</code> <button class="copy" id="copy-num" type="button">Copia numero</button></div>
+        <div class="handle">Instagram <a class="ig" href="https://www.instagram.com/ricatravel.it/" id="ig-link">@ricatravel.it</a></div>
+      </div>
+    </div>
+  </section>
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+    <div class="lb-top">
+      <div><span class="lb-title" id="lb-title"></span><span class="lb-count" id="lb-count"></span></div>
+      <button class="lb-btn" id="lb-close" type="button" aria-label="Chiudi galleria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="lb-track" id="lb-track"></div>
+    <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Foto precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Foto successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</main>
+
+<a class="wa-fab wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti" aria-label="Contattaci su WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg><span>WhatsApp</span></a>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <a class="brand" href="#home"><img src="logo-tondo.jpg" alt="Rica Travel, torna all'inizio" width="300" height="300"></a>
+      <p>Viaggi di gruppo low cost, con itinerario già pronto e compagni di viaggio nuovi.</p>
+    </div>
+    <div>
+      <h4>Esplora</h4>
+      <ul><li><a href="#partenze">Prossime partenze</a></li><li><a href="#passati">Viaggi passati</a></li><li><a href="#chi-siamo">Chi siamo</a></li></ul>
+    </div>
+    <div>
+      <h4>Contatti</h4>
+      <ul><li><a class="wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti">WhatsApp</a></li><li><a href="https://www.instagram.com/ricatravel.it/">Instagram</a></li></ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 Ricatravel · Viaggi di gruppo low cost</div>
+</footer>
+</div>
+
+<script id="page-script">
+(function(){
+// Modifica qui il numero WhatsApp (con prefisso, solo cifre, es. 393401234567) e il profilo Instagram
+var WHATSAPP = "393509318685";
+var INSTAGRAM = "ricatravel.it";
+document.querySelectorAll('.wa-link').forEach(function(a){
+  if (WHATSAPP) a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(a.dataset.msg || '');
+});
+if (INSTAGRAM){ var ig = document.getElementById('ig-link'); ig.href = 'https://www.instagram.com/' + INSTAGRAM + '/'; ig.textContent = '@' + INSTAGRAM; }
+var copyBtn = document.getElementById('copy-num');
+copyBtn.addEventListener('click', function(){
+  var num = document.getElementById('wa-num');
+  function select(){ var r=document.createRange(); r.selectNodeContents(num); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+  try { navigator.clipboard.writeText(num.textContent).then(function(){ copyBtn.textContent='Copiato'; }, select); } catch(e){ select(); }
+});
+// pagine: il menu mostra una sezione alla volta
+var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+var ids = pages.map(function(p){ return p.dataset.page; });
+var navLinks = document.querySelectorAll('nav a');
+function show(id, scroll){
+  if (ids.indexOf(id) < 0) id = 'home';
+  pages.forEach(function(p){ var on = p.dataset.page === id; if (on && p.hidden && scroll !== false) { p.classList.remove('page-in'); void p.offsetWidth; p.classList.add('page-in'); } p.hidden = !on; });
+  var navId = ['islanda','halloween','natale','sharm'].indexOf(id) >= 0 ? 'partenze' : id;
+  navLinks.forEach(function(a){ if (a.getAttribute('href') === '#' + navId) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  if (scroll !== false) window.scrollTo(0, 0);
+}
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var id = a.getAttribute('href').slice(1);
+  if (ids.indexOf(id) < 0) return;
+  e.preventDefault();
+  show(id);
+  try { history.replaceState(null, '', '#' + id); } catch(err){}
+});
+window.addEventListener('hashchange', function(){ show(location.hash.slice(1)); });
+show((location.hash || '#home').slice(1), false);
+// vai alla galleria di un viaggio
+document.querySelectorAll('.dest-tile').forEach(function(b){
+  b.addEventListener('click', function(){ var t = document.getElementById(b.dataset.go); if (t) t.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); });
+});
+// profondità del paesaggio
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var hero = document.querySelector('.hero'); if (!hero) return;
+  var layers = hero.querySelectorAll('.layer'), mx = 0, sy = 0, raf = 0;
+  function draw(){ raf = 0; layers.forEach(function(l){ var d = parseFloat(l.dataset.depth) || 0; l.style.transform = 'translate3d(' + (mx * d * -40) + 'px,' + (sy * d) + 'px,0)'; }); }
+  function req(){ if (!raf) raf = requestAnimationFrame(draw); }
+  window.addEventListener('scroll', function(){ sy = Math.min(window.scrollY, 900); req(); }, {passive:true});
+  hero.addEventListener('pointermove', function(e){ var r = hero.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; req(); });
+  hero.addEventListener('pointerleave', function(){ mx = 0; req(); });
+})();
+(document.querySelector('.scroll-cue')||document.createElement('a')).addEventListener('click', function(e){ e.preventDefault(); var t = document.getElementById('scopri'); if (t) t.scrollIntoView({behavior:'smooth'}); });
+// quiz "che viaggiatore sei?"
+(function(){
+  var card = document.getElementById('quiz-card'); if (!card) return;
+  var ICON = {"mount": "<path d=\"M3 20l6-10 4 6 3-4 5 8z\"/>", "party": "<path d=\"M4 20l5-14 9 9z\"/><path d=\"M14 4v2M19 9h2M17 6l1.5-1.5\"/>", "star": "<path d=\"M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5\"/>", "cal": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/>", "snow": "<path d=\"M12 2v20M4 6l16 12M20 6L4 18\"/>", "leaf": "<path d=\"M5 19c0-8 6-14 15-14-1 9-7 15-15 14z\"/><path d=\"M5 19l7-7\"/>", "moon": "<path d=\"M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z\"/>", "euro": "<path d=\"M17 6a7 7 0 1 0 0 12M4 10h9M4 14h9\"/>", "fire": "<path d=\"M12 22c4 0 7-3 7-7 0-5-5-7-5-12-3 2-4 5-4 7-2-1-3-3-3-3-1 2-2 4-2 8 0 4 3 7 7 7z\"/>", "wave": "<path d=\"M2 12c3-3 5-3 8 0s5 3 8 0 3-2 4-1M2 17c3-3 5-3 8 0s5 3 8 0 3-2 4-1\"/>", "cup": "<path d=\"M4 8h13v5a6 6 0 0 1-12 0z\"/><path d=\"M17 9h2a2 2 0 0 1 0 4h-2M8 3v2M12 3v2\"/>"};
+  function ico(k){ return '<span class="qz-emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[k] + '</svg></span>'; }
+  var TRIPS = {
+    islanda:{name:'Islanda',img:'foto-islanda.jpg',date:'9 – 14 novembre 2026',price:'777 €',desc:'Sei avventura allo stato puro: cascate, ghiacciai, spiagge nere e bagni nelle sorgenti calde. Il roadtrip in Islanda è il tuo viaggio.',msg:'Ehilà, sono interessato al viaggio in Islanda!'},
+    halloween:{name:'Weekend Halloween',img:'halloween-new.jpg',date:'30 ottobre – 1 novembre 2026',price:'297 €',desc:'Ti piace la festa e stare in compagnia: un weekend in villa vicino alle Cinque Terre, tra piscina, sauna, jacuzzi e la notte di Halloween.',msg:'Ehilà, sono interessato al Weekend di Halloween!'},
+    natale:{name:'Mercatini di Natale',img:'natale-new.jpg',date:'26 – 29 novembre 2026',price:'397 €',desc:'Sei un\'anima romantica: luci, casette di legno e vin brulé. Quattro giorni nella Londra di Natale fanno per te.',msg:'Ehilà, sono interessato ai Mercatini di Natale a Londra!'},
+    sharm:{name:'Sharm el-Sheikh',img:'sharm-new.jpg',date:'11 – 16 gennaio 2027',price:'687 €',desc:'Hai bisogno di sole e mare: snorkeling tra i coralli e giornate in spiaggia mentre in Italia è pieno inverno.',msg:'Ehilà, sono interessato al viaggio a Sharm el-Sheikh!'}
+  };
+  var Q = [
+    {q:'Che tipo di viaggio stai cercando?', o:[['mount','Avventura e natura',{islanda:3}],['party','Festa e risate',{halloween:3}],['star','Atmosfera magica',{natale:3}],['sun','Sole e mare',{sharm:3}]]},
+    {q:'Quanto tempo hai?', o:[['cal','Solo un weekend',{halloween:2,natale:2}],['cal','Quasi una settimana',{islanda:2,sharm:2}]]},
+    {q:'Il tuo clima ideale?', o:[['snow','Freddo e paesaggi epici',{islanda:2}],['leaf','Autunno e foglie colorate',{halloween:2}],['cup','Freddo, luci e cioccolata calda',{natale:2}],['sun','Caldo, anche a gennaio',{sharm:2}]]},
+    {q:'La sera ti vedi…', o:[['fire','In una sorgente calda sotto le stelle',{islanda:2}],['moon','A una festa in maschera',{halloween:2}],['cup','Tra le bancarelle con un vin brulé',{natale:2}],['wave','In spiaggia ad ascoltare il mare',{sharm:2}]]},
+    {q:'Quanto vuoi spendere?', o:[['euro','Meno di 300 €',{halloween:2}],['euro','Tra 300 e 400 €',{natale:2}],['euro','Fino a 700 €',{sharm:2,natale:1}],['euro','Fino a 800 €',{islanda:2,sharm:1}]]}
+  ];
+  var step = 0, score = {};
+  function render(){
+    if (step >= Q.length) return result();
+    var item = Q[step], html = '<div class="qz-anim"><div class="qz-top"><span>Domanda ' + (step + 1) + ' di ' + Q.length + '</span><span>Che viaggiatore sei?</span></div>';
+    html += '<div class="qz-bar"><i style="width:' + (step / Q.length * 100) + '%"></i></div><h2 class="qz-q">' + item.q + '</h2><div class="qz-opts">';
+    item.o.forEach(function(o, i){ html += '<button type="button" class="qz-opt" data-i="' + i + '">' + ico(o[0]) + '<span>' + o[1] + '</span></button>'; });
+    card.innerHTML = html + '</div></div>';
+  }
+  function result(){
+    var best = 'islanda', max = -1;
+    Object.keys(TRIPS).forEach(function(k){ if ((score[k] || 0) > max){ max = score[k] || 0; best = k; } });
+    var t = TRIPS[best], wa = document.querySelector('.wa-link'), num = '';
+    var href = '#contatti';
+    if (wa && /wa\.me\/(\d+)/.test(wa.href)) href = 'https://wa.me/' + wa.href.match(/wa\.me\/(\d+)/)[1] + '?text=' + encodeURIComponent(t.msg);
+    card.innerHTML = '<div class="qz-anim"><div class="qz-top"><span>Il tuo viaggio perfetto è…</span></div><div class="qz-bar"><i style="width:100%"></i></div>' +
+      '<div class="qz-res"><img src="' + t.img + '" alt="' + t.name + '"><div class="qz-res-body"><span class="qz-date">' + t.date + '</span><h2>' + t.name + '</h2><p>' + t.desc + '</p><span class="qz-price">' + t.price + '</span>' +
+      '<div class="qz-btns"><a class="btn btn-line" href="#' + best + '">Scopri il viaggio</a><a class="btn btn-wa" href="' + href + '">Prenota ora</a></div>' +
+      '<button type="button" class="qz-again">Rifai il quiz</button></div></div></div>';
+  }
+  card.addEventListener('click', function(e){
+    var b = e.target.closest('.qz-opt');
+    if (b){ var pts = Q[step].o[+b.dataset.i][2]; Object.keys(pts).forEach(function(k){ score[k] = (score[k] || 0) + pts[k]; }); step++; render(); if (card.getBoundingClientRect().top < 80) window.scrollTo(0, 0); return; }
+    if (e.target.closest('.qz-again')){ step = 0; score = {}; render(); }
+  });
+  window.addEventListener('hashchange', function(){ if (location.hash === '#quiz'){ step = 0; score = {}; render(); } });
+  render();
+})();
+// conto alla rovescia alla prossima partenza
+(function(){
+  var box = document.getElementById('countdown'); if (!box) return;
+  var trips = [['halloween','Weekend Halloween','2026-10-30T00:00:00+01:00'],['islanda','Islanda','2026-11-09T00:00:00+01:00'],['natale','Mercatini di Natale','2026-11-26T00:00:00+01:00'],['sharm','Sharm el-Sheikh','2027-01-11T00:00:00+01:00']];
+  var name = document.getElementById('cd-name'), el = {d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function tick(){
+    var now = Date.now(), next = null;
+    for (var i = 0; i < trips.length; i++){ var t = Date.parse(trips[i][2]); if (t > now){ next = trips[i]; break; } }
+    if (!next){ box.hidden = true; return; }
+    name.textContent = next[1]; name.href = '#' + next[0];
+    var diff = Math.floor((Date.parse(next[2]) - now) / 1000);
+    el.d.textContent = pad(Math.floor(diff / 86400)); el.h.textContent = pad(Math.floor(diff % 86400 / 3600));
+    el.m.textContent = pad(Math.floor(diff % 3600 / 60)); el.s.textContent = pad(diff % 60);
+  }
+  tick(); setInterval(tick, 1000);
+})();
+// carosello partenze
+(function(){
+  var t = document.getElementById('deps-track'); if (!t) return;
+  var prev = document.getElementById('deps-prev'), next = document.getElementById('deps-next');
+  function step(){ var c = t.querySelector('.dep'); return c ? c.getBoundingClientRect().width + 20 : 300; }
+  function upd(){ prev.disabled = t.scrollLeft < 4; next.disabled = t.scrollLeft + t.clientWidth >= t.scrollWidth - 4; }
+  prev.addEventListener('click', function(){ t.scrollBy({left: -step()}); });
+  next.addEventListener('click', function(){ t.scrollBy({left: step()}); });
+  t.addEventListener('scroll', function(){ requestAnimationFrame(upd); });
+  window.addEventListener('resize', upd);
+  document.addEventListener('click', function(){ setTimeout(upd, 50); });
+  upd();
+})();
+// effetti allo scorrimento
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.querySelector('.progress');
+  function prog(){ var h = document.documentElement.scrollHeight - innerHeight; bar.style.setProperty('--p', h > 0 ? Math.min(1, scrollY / h) : 0); }
+  addEventListener('scroll', prog, {passive:true}); addEventListener('resize', prog); prog();
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var sel = '.statement-text,.countdown,.quiz-cta,.faq > *,.faq-item,.deps-head,.dep,.how > *,.steps li,.moments-head,.moments-grid a,.ex3-about,.ex3-contact,#partenze .head,.trow,#passati .head,.dest-tile,.past-head,.gal-item,.about > *,.contact,.tp-intro,.stop,.incl-box,.highlights li,.tp-book,.foot > *';
+  var els = document.querySelectorAll(sel);
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+  els.forEach(function(el){
+    var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.transitionDelay = Math.min(sib, 6) * 0.08 + 's';
+    el.classList.add('rv'); io.observe(el);
+    el.addEventListener('transitionend', function(){ el.style.transitionDelay = ''; }, {once:true});
+  });
+  // effetto 3D al passaggio del mouse
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('.dep,.trip,.dest-tile,.gal-item').forEach(function(c){
+    c.classList.add('tilt');
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.classList.add('tilting');
+      c.style.setProperty('--mx', (x * 100) + '%'); c.style.setProperty('--my', (y * 100) + '%');
+      c.style.transform = 'perspective(900px) rotateX(' + ((.5 - y) * 7) + 'deg) rotateY(' + ((x - .5) * 9) + 'deg) translateY(-4px)';
+    });
+    c.addEventListener('pointerleave', function(){ c.classList.remove('tilting'); c.style.transform = ''; });
+  });
+})();
+// mosaico galleria senza buchi
+document.querySelectorAll('.gal').forEach(function(g){
+  var it = g.querySelectorAll('.gal-item'), n = it.length; if (!n) return;
+  it[0].classList.add('big');
+  var rest = n - 5;                       // dopo la foto grande + 4 piccole
+  if (rest === 1) it[5].classList.add('full');
+  else if (rest === 2){ it[5].classList.add('wide'); it[6].classList.add('wide'); }
+  else if (rest === 3){ it[5].classList.add('wide'); }
+  if ((n - 1) % 2 === 1) it[n - 1].classList.add('m-full');
+  if (n % 4 === 0) g.classList.add('cols4');
+});
+// nastro "momenti veri": scorre da solo, si trascina col dito
+(function(){
+  var reel = document.querySelector('.moments-reel'); if (!reel) return;
+  var track = reel.querySelector('.moments-track');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = false, resumeT = null, pos = 0, last = 0;
+  function half(){ return track.scrollWidth / 2; }
+  function frame(t){
+    var dt = last ? Math.min(t - last, 50) : 16; last = t;
+    if (!paused && !reduce && !reel.closest('[hidden]')){
+      pos += dt * 0.035;
+      if (pos >= half()) pos -= half();
+      reel.scrollLeft = pos;
+    }
+    requestAnimationFrame(frame);
+  }
+  function hold(){ paused = true; clearTimeout(resumeT); }
+  function release(delay){ clearTimeout(resumeT); resumeT = setTimeout(function(){ pos = reel.scrollLeft; if (pos >= half()) pos -= half(); paused = false; }, delay); }
+  reel.addEventListener('touchstart', hold, {passive:true});
+  reel.addEventListener('touchend', function(){ release(1200); }, {passive:true});
+  reel.addEventListener('touchcancel', function(){ release(1200); }, {passive:true});
+  reel.addEventListener('wheel', function(){ hold(); release(1200); }, {passive:true});
+  if (matchMedia('(hover: hover)').matches){
+    reel.addEventListener('mouseenter', hold);
+    reel.addEventListener('mouseleave', function(){ release(200); });
+  }
+  reel.addEventListener('scroll', function(){ if (paused){ if (reel.scrollLeft >= half()) { reel.scrollLeft -= half(); } } }, {passive:true});
+  requestAnimationFrame(frame);
+})();
+// galleria a tutto schermo
+var lb = document.getElementById('lb'), track = document.getElementById('lb-track');
+var lbTitle = document.getElementById('lb-title'), lbCount = document.getElementById('lb-count');
+var lbTotal = 0, lastFocus = null;
+function lbIndex(){ return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
+function lbUpdate(){ lbCount.textContent = (lbIndex() + 1) + ' / ' + lbTotal; }
+function lbGo(i){ i = Math.max(0, Math.min(lbTotal - 1, i)); track.scrollTo({left: i * track.clientWidth}); }
+function lbOpen(gal, start, title){
+  lastFocus = document.activeElement;
+  track.textContent = '';
+  var imgs = gal.querySelectorAll('img');
+  lbTotal = imgs.length;
+  imgs.forEach(function(im){
+    var slide = document.createElement('div'); slide.className = 'lb-slide';
+    var big = document.createElement('img'); big.src = im.getAttribute('src'); big.alt = im.alt;
+    slide.appendChild(big); track.appendChild(slide);
+  });
+  lbTitle.textContent = title;
+  lb.hidden = false; document.documentElement.style.overflow = 'hidden';
+  track.style.scrollBehavior = 'auto'; track.scrollLeft = start * track.clientWidth; track.style.scrollBehavior = '';
+  lbUpdate();
+  document.getElementById('lb-close').focus();
+}
+function lbClose(){ lb.hidden = true; document.documentElement.style.overflow = ''; track.textContent = ''; if (lastFocus) lastFocus.focus(); }
+document.querySelectorAll('.gal').forEach(function(gal){
+  var title = (gal.closest('.trip-gal').querySelector('h3') || {}).textContent || '';
+  gal.querySelectorAll('.gal-item').forEach(function(btn, i){ btn.addEventListener('click', function(){ lbOpen(gal, i, title); }); });
+});
+track.addEventListener('scroll', function(){ window.requestAnimationFrame(lbUpdate); });
+document.getElementById('lb-close').addEventListener('click', lbClose);
+document.getElementById('lb-prev').addEventListener('click', function(){ lbGo(lbIndex() - 1); });
+document.getElementById('lb-next').addEventListener('click', function(){ lbGo(lbIndex() + 1); });
+document.addEventListener('keydown', function(e){
+  if (lb.hidden) return;
+  if (e.key === 'Escape') lbClose();
+  else if (e.key === 'ArrowRight') lbGo(lbIndex() + 1);
+  else if (e.key === 'ArrowLeft') lbGo(lbIndex() - 1);
+});
+window.addEventListener('resize', function(){ if (!lb.hidden) lbGo(lbIndex()); });
+window.addEventListener('hashchange', function(){ if (!lb.hidden) lbClose(); });
+})();
+</script>
+
+<script>
+(function(){
+  if (window.CSS && CSS.supports && CSS.supports('aspect-ratio', '1 / 1')) return;
+  function mob(){ return window.innerWidth <= 640; }
+  var R = [['.about .arch',1],['.arch',0.8],['.moments-grid a',1],['.dest-tile',0.75],['.dep-img',1],['.tp-hero',function(){return mob()?0.8:21/9;}],['.trow-img',4/3],['.mo:nth-child(3n)',4/3],['.mo',0.75],['.qz-res img',0.8],['.ix-thumb',4/3],['.tile',4/3]];
+  function fit(){
+    var done = [];
+    R.forEach(function(r){
+      var ratio = typeof r[1] === 'function' ? r[1]() : r[1];
+      Array.prototype.forEach.call(document.querySelectorAll(r[0]), function(el){
+        if (done.indexOf(el) > -1) return; done.push(el);
+        var w = el.getBoundingClientRect().width;
+        if (w) el.style.height = (w / ratio) + 'px';
+      });
+    });
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  window.addEventListener('hashchange', function(){ setTimeout(fit, 30); setTimeout(fit, 400); });
+  document.addEventListener('click', function(){ setTimeout(fit, 30); });
+})();
+</script>
+
+</body>
+</html>
