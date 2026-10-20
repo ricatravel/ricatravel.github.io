@@ -779,6 +779,12 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .dep-img,.trip .arch{box-shadow:none !important}
 /* da computer tutto un po' più piccolo */
 @media (min-width:1024px){html{zoom:.88}}
+
+/* copertina: foto orizzontale da computer, verticale da telefono */
+.hero-m{display:none}
+@media (max-width:760px){.hero-d{display:none}.hero-m{display:block}}
+.reel-photo.hero-d{object-position:50% 45% !important}
+.reel-photo.hero-m{object-position:50% 40% !important}
 </style>
 </head>
 <body>
@@ -805,7 +811,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="page" data-page="home">
   <div class="hero hero-reel">
     <div class="reel" aria-hidden="true">
-      <img class="reel-video reel-photo" src="carezza-hero3.jpg" alt="">
+      <img class="reel-video reel-photo hero-d" src="carezza.jpg" alt="">
+      <img class="reel-video reel-photo hero-m" src="carezza-hero2.jpg" alt="">
       <div class="reel-shade"></div>
     </div>
     <div class="wrap hero-text">
