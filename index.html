@@ -671,7 +671,7 @@ h2 em{background-image:linear-gradient(#D3E3B6,#D3E3B6);background-repeat:no-rep
 .hero-place span{font-size:11px;font-weight:500;letter-spacing:.18em;color:#D3E3B6}
 .hero-reel .scroll-cue{left:auto !important;right:clamp(20px,4vw,56px);translate:none !important;bottom:22px !important}
 @media (max-width:700px){
-  .hero-place{top:auto;bottom:118px;right:16px;font-size:12px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+  .hero-place{top:auto;bottom:22px;right:auto;left:20px;justify-items:start !important;text-align:left !important;font-size:12px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
   .hero-place span{font-size:10px}
   .hero-reel{min-height:86svh !important}
   .hero-reel .hero-text{padding-bottom:64px !important}
@@ -793,6 +793,40 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 @media (max-width:760px){.hero-d{display:none}.hero-m{display:block}}
 .reel-photo.hero-d{object-position:50% 45% !important}
 .reel-photo.hero-m{object-position:50% 40% !important}
+
+/* --- call to action e prima schermata --- */
+.btn-hero{background:#2C4434;color:#FBF9F0;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.btn-hero:hover{background:#1F3A2E}
+.btn-hero svg{width:18px;height:18px}
+.hero-reel .btn-hero{background:#FBF9F0;color:#2C4434}
+.hero-reel .btn-hero:hover{background:#D3E3B6}
+.hero-crew{display:inline-flex;align-items:center;gap:14px;margin-top:6px;color:#FBF9F0;text-decoration:none}
+.crew-faces{display:flex}
+.crew-faces img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #FBF9F0;margin-left:-12px;box-shadow:0 4px 12px -4px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.crew-faces img:first-child{margin-left:0}
+.hero-crew:hover .crew-faces img{transform:translateY(-3px)}
+.hero-crew:hover .crew-faces img:nth-child(2){transition-delay:.04s}.hero-crew:hover .crew-faces img:nth-child(3){transition-delay:.08s}.hero-crew:hover .crew-faces img:nth-child(4){transition-delay:.12s}
+.crew-txt{display:grid;font-size:13px;line-height:1.35;color:#E4ECD0;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.crew-txt b{font-size:14px;color:#FBF9F0}
+@media (max-width:640px){.hero-reel .scroll-cue{display:none !important}.crew-faces img{width:36px;height:36px}.hero-reel .cta .btn-hero{width:100%;justify-content:center}}
+/* prima schermata più compatta: le partenze arrivano prima */
+.statement{padding-block:clamp(40px,5vw,72px) 0 !important}
+.statement-text{font-size:clamp(24px,3.4vw,44px) !important}
+.countdown{margin-top:clamp(24px,3vw,40px) !important;padding:clamp(18px,2.4vw,26px) clamp(20px,3.4vw,36px) !important}
+.home-more{padding-top:clamp(32px,4vw,56px) !important}
+/* card: un pulsante principale */
+.btn-wa:not(.wa-link):not(.ex3-wa){gap:8px}
+/* chi siamo: invito finale */
+.about-cta{margin-top:28px;padding:clamp(20px,3vw,28px);border-radius:24px;background:#2C4434;color:#FBF9F0;display:grid;gap:14px;justify-items:start}
+.about-cta-t{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.4vw,30px);line-height:1.15;letter-spacing:-.02em}
+.about-cta-t em{font-style:normal;color:#D3E3B6}
+.about-cta .btn-hero{background:#FBF9F0;color:#2C4434}
+/* accento terracotta, solo nei dettagli */
+:root{--terra:#C8693F}
+.eyebrow::before,.hero-kicker::before{background:var(--terra) !important}
+.hand,.head .hand{color:var(--terra) !important}
+.stop-dot{border-color:var(--terra) !important}
+.cd-dot{background:var(--terra) !important}
 </style>
 </head>
 <body>
@@ -827,9 +861,13 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
       <p class="hero-kicker">Viaggi di gruppo low cost</p>
       <h1>Viaggi tra sconosciuti <em>per spiriti liberi</em></h1>
       <div class="cta">
-        <a class="btn btn-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Contattaci su WhatsApp</a>
-        <a class="btn btn-ghost" href="#partenze">Vedi le partenze</a>
+        <a class="btn btn-hero" href="#partenze">Scopri le prossime partenze <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Scrivici su WhatsApp</a>
       </div>
+      <a class="hero-crew" href="#passati">
+        <span class="crew-faces"><img src="slo-gruppo.jpg" alt=""><img src="kenya-amiche.jpg" alt=""><img src="marocco-quad-gruppo.jpg" alt=""><img src="thai-maya.jpg" alt=""></span>
+        <span class="crew-txt"><b>Gente vera, viaggi veri</b>Guarda i momenti dei nostri viaggi</span>
+      </a>
     </div>
     <p class="hero-place" aria-hidden="true"><span>46.41° N, 11.57° E</span>Lago di Carezza, Dolomiti</p>
     
@@ -890,8 +928,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
               <h3><a class="dep-title" href="#islanda">Islanda</a></h3>
               <p>9 – 14 novembre 2026</p>
               <p class="dep-price">777 €</p>
-              <a class="btn btn-line" href="#islanda">Scopri il viaggio</a>
-              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              <a class="btn btn-wa" href="#islanda">Scopri il viaggio</a>
+              <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
             </div>
           </article>
           <article class="dep">
@@ -900,8 +938,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
               <h3><a class="dep-title" href="#halloween">Weekend Halloween</a></h3>
               <p>30 ottobre – 1 novembre 2026</p>
               <p class="dep-price">297 €</p>
-              <a class="btn btn-line" href="#halloween">Scopri il viaggio</a>
-              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              <a class="btn btn-wa" href="#halloween">Scopri il viaggio</a>
+              <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
             </div>
           </article>
           <article class="dep">
@@ -910,8 +948,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
               <h3><a class="dep-title" href="#natale">Mercatini di Natale</a></h3>
               <p>26 – 29 novembre 2026 · Londra</p>
               <p class="dep-price">397 €</p>
-              <a class="btn btn-line" href="#natale">Scopri il viaggio</a>
-              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              <a class="btn btn-wa" href="#natale">Scopri il viaggio</a>
+              <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
             </div>
           </article>
           <article class="dep">
@@ -920,8 +958,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
               <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
               <p>11 – 16 gennaio 2027</p>
               <p class="dep-price">687 €</p>
-              <a class="btn btn-line" href="#sharm">Scopri il viaggio</a>
-              <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+              <a class="btn btn-wa" href="#sharm">Scopri il viaggio</a>
+              <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
             </div>
           </article>
       </div>
@@ -986,10 +1024,10 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
         <div class="ex3-contact">
           <svg class="ex3-sun" viewBox="20 30 560 340" aria-hidden="true"><g fill="currentColor"><path d="M115,272 Q78.7,247.6 35,248 Q71.3,272.4 115,272Z"/><path d="M178,190 Q155.6,137.4 112,100 Q134.4,152.6 178,190Z"/><path d="M270,170 Q290.3,107.5 285,42 Q264.7,104.5 270,170Z"/><path d="M370,195 Q410.7,158.8 430,108 Q389.3,144.2 370,195Z"/><path d="M430,262 Q480.1,250.0 518,215 Q467.9,227.0 430,262Z"/><path d="M445,345 Q502.5,358.0 560,345 Q502.5,332.0 445,345Z"/></g><path d="M157,306 C163,248 215,213 275,213 C337,214 382,262 384,352" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/></svg>
           <span class="ex3-k">Contatti</span>
-          <h3 class="ex3-t">Hai una domanda? <em>Scrivici.</em></h3>
-          <p class="ex3-p">Su date, prezzi, posti liberi o solo per conoscerci: rispondiamo noi, non un bot.</p>
+          <h3 class="ex3-t">Hai voglia di partire <em>con noi?</em></h3>
+          <p class="ex3-p">Date, prezzi, posti liberi o solo due chiacchiere per conoscerci: ti rispondiamo noi, non un bot.</p>
           <div class="ex3-btns">
-            <a class="btn ex3-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>WhatsApp</a>
+            <a class="btn ex3-wa wa-link" data-msg="Ehilà, vorrei qualche informazione sui vostri viaggi!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>Parliamone su WhatsApp</a>
             <a class="btn ex3-ig" href="https://www.instagram.com/ricatravel.it/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>Instagram</a>
           </div>
         </div>
@@ -1024,8 +1062,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div class="trow-foot">
               <p class="trow-price">777 €</p>
               <div class="trow-btns">
-                <a class="btn btn-line" href="#islanda">Scopri il viaggio</a>
-                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+                <a class="btn btn-wa" href="#islanda">Scopri il viaggio</a>
+                <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
               </div>
             </div>
           </div>
@@ -1044,8 +1082,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div class="trow-foot">
               <p class="trow-price">297 €</p>
               <div class="trow-btns">
-                <a class="btn btn-line" href="#halloween">Scopri il viaggio</a>
-                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+                <a class="btn btn-wa" href="#halloween">Scopri il viaggio</a>
+                <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
               </div>
             </div>
           </div>
@@ -1064,8 +1102,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div class="trow-foot">
               <p class="trow-price">397 €</p>
               <div class="trow-btns">
-                <a class="btn btn-line" href="#natale">Scopri il viaggio</a>
-                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+                <a class="btn btn-wa" href="#natale">Scopri il viaggio</a>
+                <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
               </div>
             </div>
           </div>
@@ -1084,8 +1122,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div class="trow-foot">
               <p class="trow-price">687 €</p>
               <div class="trow-btns">
-                <a class="btn btn-line" href="#sharm">Scopri il viaggio</a>
-                <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+                <a class="btn btn-wa" href="#sharm">Scopri il viaggio</a>
+                <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
               </div>
             </div>
           </div>
@@ -1144,7 +1182,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div><dt>Date</dt><dd>9 – 14 novembre 2026</dd></div>
             <div><dt>Prezzo</dt><dd>777 €</dd></div>
           </dl>
-          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
           <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
         </aside>
       </div>
@@ -1199,7 +1237,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div><dt>Date</dt><dd>30 ottobre – 1 novembre 2026</dd></div>
             <div><dt>Prezzo</dt><dd>297 €</dd></div>
           </dl>
-          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
           <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
         </aside>
       </div>
@@ -1255,7 +1293,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div><dt>Date</dt><dd>26 – 29 novembre 2026</dd></div>
             <div><dt>Prezzo</dt><dd>397 €</dd></div>
           </dl>
-          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato ai Mercatini di Natale a Londra!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
           <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
         </aside>
       </div>
@@ -1310,7 +1348,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <div><dt>Date</dt><dd>11 – 16 gennaio 2027</dd></div>
             <div><dt>Prezzo</dt><dd>687 €</dd></div>
           </dl>
-          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
+          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
           <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
         </aside>
       </div>
@@ -1409,6 +1447,10 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
           <li><b>Movimento</b>Ci piace camminare, nuotare, esplorare: niente vacanze sul divano.</li>
           <li><b>Persone</b>Parti da sconosciuto, torni a casa con un gruppo di amici.</li>
         </ul>
+        <div class="about-cta">
+          <p class="about-cta-t">Hai voglia di partire <em>con noi?</em></p>
+          <a class="btn btn-hero wa-link" data-msg="Ehilà, vorrei partire con voi! Mi date qualche informazione?" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Parliamone su WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
