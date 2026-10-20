@@ -821,6 +821,11 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .about-cta-t{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.4vw,30px);line-height:1.15;letter-spacing:-.02em}
 .about-cta-t em{font-style:normal;color:#D3E3B6}
 .about-cta .btn-hero{background:#FBF9F0;color:#2C4434}
+
+/* linea che collega le tappe ben visibile */
+.stops::before{display:none !important}
+.stop{position:relative}
+.stop:not(:last-child)::after{content:"";position:absolute;left:9px;top:42px;bottom:-14px;border-left:2px dashed #9DAE94}
 </style>
 </head>
 <body>
