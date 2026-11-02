@@ -826,6 +826,13 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .stops::before{display:none !important}
 .stop{position:relative}
 .stop:not(:last-child)::after{content:"";position:absolute;left:9px;top:42px;bottom:-14px;border-left:2px dashed #9DAE94}
+
+/* viaggi passati: 5 destinazioni */
+.dest{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+@media (max-width:640px){.dest{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.dest .dest-tile:first-child{grid-column:1 / -1;aspect-ratio:16/9}}
+.dest-tile span{font-size:clamp(20px,2.2vw,28px) !important;line-height:1.05;right:12px}
+.gal:empty{display:none !important}
+.gal-soon{margin:0;padding:clamp(28px,4vw,48px) 16px;text-align:center;border:1.5px dashed #C9D6B4;border-radius:18px;color:var(--muted);font-size:15px}
 </style>
 </head>
 <body>
@@ -876,19 +883,15 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="ticker" aria-hidden="true">
     <div>
       <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
-      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
-      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
-      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Islanda</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
-      <span>Weekend Halloween</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Mercatini di Natale</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
       <span>Sharm el-Sheikh</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 4v3M5 8l2 2M19 8l-2 2M2 15h3M19 15h3M4 19h16"/></svg>
     </div>
@@ -929,16 +932,6 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
               <p class="dep-price">777 €</p>
               <a class="btn btn-wa" href="#islanda">Scopri il viaggio</a>
               <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio in Islanda!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
-            </div>
-          </article>
-          <article class="dep">
-            <a class="dep-img" href="#halloween" aria-label="Scopri il viaggio: Weekend Halloween"><img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera"><span class="badge badge-hot"><i></i>Ultimi 2 posti</span></a>
-            <div class="dep-body">
-              <h3><a class="dep-title" href="#halloween">Weekend Halloween</a></h3>
-              <p>30 ottobre – 1 novembre 2026</p>
-              <p class="dep-price">297 €</p>
-              <a class="btn btn-wa" href="#halloween">Scopri il viaggio</a>
-              <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
             </div>
           </article>
           <article class="dep">
@@ -1068,32 +1061,12 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
           </div>
         </article>
         <article class="trow flip">
-          <a class="trow-img" href="#halloween" aria-label="Scopri il viaggio: Weekend Halloween">
-            <img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera">
-            <span class="badge badge-hot"><i></i>Ultimi 2 posti</span>
-          </a>
-          <div class="trow-body">
-            <p class="trow-num">02</p>
-            <h3><a class="dep-title" href="#halloween">Weekend Halloween</a></h3>
-            <p class="trow-dates">30 ottobre / 1 novembre 2026</p>
-            <p class="trow-desc">Un weekend in villa vicino alle Cinque Terre, con piscina, sauna e jacuzzi, per festeggiare Halloween con un gruppo nuovo.</p>
-            <ul class="trow-tags"><li>Villa</li><li>Piscina</li><li>Sauna e jacuzzi</li><li>Festa</li></ul>
-            <div class="trow-foot">
-              <p class="trow-price">297 €</p>
-              <div class="trow-btns">
-                <a class="btn btn-wa" href="#halloween">Scopri il viaggio</a>
-                <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="trow">
           <a class="trow-img" href="#natale" aria-label="Scopri il viaggio: Mercatini di Natale">
             <img style="object-position:50% 30%" src="natale-new.jpg" alt="Luci natalizie a forma di angeli sopra una strada con autobus rossi">
             <span class="badge"><i></i>Posti disponibili</span>
           </a>
           <div class="trow-body">
-            <p class="trow-num">03</p>
+            <p class="trow-num">02</p>
             <h3><a class="dep-title" href="#natale">Mercatini di Natale</a></h3>
             <p class="trow-dates">26 / 29 novembre 2026 · Londra</p>
             <p class="trow-desc">Quattro giorni a Londra tra luci di Natale, mercatini e street food, per entrare nell'atmosfera delle feste.</p>
@@ -1107,13 +1080,13 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             </div>
           </div>
         </article>
-        <article class="trow flip">
+        <article class="trow">
           <a class="trow-img" href="#sharm" aria-label="Scopri il viaggio: Sharm el-Sheikh">
             <img style="object-position:50% 40%" src="sharm-new.jpg" alt="Spiaggia di Sharm con ombrelloni colorati e il mare turchese del Mar Rosso">
             <span class="badge"><i></i>Posti disponibili</span>
           </a>
           <div class="trow-body">
-            <p class="trow-num">04</p>
+            <p class="trow-num">03</p>
             <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
             <p class="trow-dates">11 / 16 gennaio 2027</p>
             <p class="trow-desc">Sole a gennaio sul Mar Rosso: spiagge, snorkeling tra i coralli e serate in compagnia.</p>
@@ -1188,60 +1161,6 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
     </div>
   </section>
 
-  <section id="halloween" class="page trip-page" data-page="halloween" hidden>
-    <div class="wrap">
-      <a class="back" href="#partenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Tutte le partenze</a>
-      <div class="tp-hero">
-        <img style="object-position:50% 70%" src="halloween-new.jpg" alt="Zucche e decorazioni di Halloween davanti a una casa di pietra coperta di edera">
-        <div class="tp-hero-text">
-          <span class="badge badge-hot"><i></i>Ultimi 2 posti</span>
-          <h1>Weekend Halloween</h1>
-          <p>30 ottobre – 1 novembre 2026 · 3 giorni · villa a Sarzana</p>
-        </div>
-      </div>
-
-      <div class="tp-grid">
-        <div class="tp-main">
-          <div class="tp-intro">
-            <p class="eyebrow">Il viaggio</p>
-            <h2>Halloween in villa, <em>tra Apuane e Cinque Terre</em></h2>
-            <p class="lead">Un weekend in una villa esclusiva a Sarzana, tra le Alpi Apuane e le Cinque Terre, con piscina riscaldata, jacuzzi e sauna. Di giorno trekking, sport e mare nel Golfo dei Poeti, la sera la villa si trasforma per la festa di Halloween. Arrivi senza conoscere nessuno e riparti con un gruppo di amici.</p>
-          </div>
-
-          <div>
-            <p class="eyebrow">Cosa faremo</p>
-            <ol class="stops">
-            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>La villa a Sarzana</h3><p>Ci ritroviamo in villa: piscina riscaldata, jacuzzi e sauna per iniziare il weekend nel modo giusto.</p></div></li>
-            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Trekking e sport</h3><p>Sentieri, sfide sportive e un po' di adrenalina, tutti insieme.</p></div></li>
-            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Lerici e il Golfo dei Poeti</h3><p>Ci spostiamo sulla costa per scoprire Lerici, tra attività e tempo libero sul mare.</p></div></li>
-            <li class="stop"><span class="stop-dot" aria-hidden="true"></span><div><h3>Halloween Night</h3><p>Rientro al tramonto e festa a tema in villa: costumi, musica e giochi fino a tarda notte.</p></div></li>
-            </ol>
-          </div>
-
-          <div class="tp-incl">
-            <div class="incl-box yes">
-              <h3>Cosa è incluso</h3>
-              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Villa</b>Soggiorno nella villa a Sarzana con piscina riscaldata, jacuzzi e sauna.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Villa a tema</b>Decorazioni, luci e atmosfera di Halloween in ogni stanza.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Halloween Party</b>Musica, giochi e costumi: la festa è tutta inclusa.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gift ESN</b>Barrette proteiche e prodotti Elite Sports Nutrition in regalo.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Coordinatore</b>Sempre con il gruppo, dall'inizio alla fine del viaggio.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Itinerario su misura</b>Un programma pensato da noi per vivere al meglio la destinazione.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Gruppo WhatsApp</b>Con assistenza 24/7, prima e durante il viaggio.</span></li></ul>
-            </div>
-            <div class="incl-box no">
-              <h3>Cosa non è incluso</h3>
-              <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Pasti</b>Pasti e spese personali sono a parte.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span><b>Attività extra</b>Attività facoltative fuori programma.</span></li></ul>
-            </div>
-          </div>
-        </div>
-
-        <aside class="tp-book">
-          <p class="eyebrow">Prenota il tuo posto</p>
-          <dl>
-            <div><dt>Date</dt><dd>30 ottobre – 1 novembre 2026</dd></div>
-            <div><dt>Prezzo</dt><dd>297 €</dd></div>
-          </dl>
-          <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al Weekend di Halloween!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
-          <p class="tp-note">Scrivici per qualsiasi domanda: siamo qui per aiutarti.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
 
   <section id="natale" class="page trip-page" data-page="natale" hidden>
     <div class="wrap">
@@ -1372,6 +1291,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
       </div>
 
       <div class="dest" aria-label="Scegli un viaggio">
+        <button class="dest-tile" type="button" data-go="gal-halloween"><img src="halloween-new.jpg" alt="" style="object-position:50% 70%"><span>Halloween con ESN</span></button>
         <button class="dest-tile" type="button" data-go="gal-slovenia"><img src="slo-lago.jpg" alt="" style="object-position:50% 45%"><span>Slovenia</span></button>
         <button class="dest-tile" type="button" data-go="gal-thailandia"><img src="thai-barca.jpg" alt=""><span>Thailandia</span></button>
         <button class="dest-tile" type="button" data-go="gal-kenya"><img src="kenya-leonessa.jpg" alt=""><span>Kenya</span></button>
@@ -1379,6 +1299,11 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
       </div>
 
       <div class="past">
+        <div class="trip-gal" id="gal-halloween">
+          <div class="past-head"><div><h3>Halloween con ESN</h3><p class="ph-tag">Un weekend in villa a Sarzana, tra feste, sport e Golfo dei Poeti</p></div></div>
+          <div class="gal"></div>
+          <p class="gal-soon">Le foto di questo weekend arrivano a breve.</p>
+        </div>
         <div class="trip-gal" id="gal-slovenia">
           <div class="past-head"><div><h3>Slovenia</h3><p class="ph-tag">In van tra laghi smeraldo e montagne</p></div></div>
           <div class="gal">
@@ -1537,7 +1462,7 @@ var navLinks = document.querySelectorAll('nav a');
 function show(id, scroll){
   if (ids.indexOf(id) < 0) id = 'home';
   pages.forEach(function(p){ var on = p.dataset.page === id; if (on && p.hidden && scroll !== false) { p.classList.remove('page-in'); void p.offsetWidth; p.classList.add('page-in'); } p.hidden = !on; });
-  var navId = ['islanda','halloween','natale','sharm'].indexOf(id) >= 0 ? 'partenze' : id;
+  var navId = ['islanda','natale','sharm'].indexOf(id) >= 0 ? 'partenze' : id;
   navLinks.forEach(function(a){ if (a.getAttribute('href') === '#' + navId) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (scroll !== false) window.scrollTo(0, 0);
 }
@@ -1575,16 +1500,15 @@ document.querySelectorAll('.dest-tile').forEach(function(b){
   function ico(k){ return '<span class="qz-emo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[k] + '</svg></span>'; }
   var TRIPS = {
     islanda:{name:'Islanda',img:'foto-islanda.jpg',date:'9 – 14 novembre 2026',price:'777 €',desc:'Sei avventura allo stato puro: cascate, ghiacciai, spiagge nere e bagni nelle sorgenti calde. Il roadtrip in Islanda è il tuo viaggio.',msg:'Ehilà, sono interessato al viaggio in Islanda!'},
-    halloween:{name:'Weekend Halloween',img:'halloween-new.jpg',date:'30 ottobre – 1 novembre 2026',price:'297 €',desc:'Ti piace la festa e stare in compagnia: un weekend in villa vicino alle Cinque Terre, tra piscina, sauna, jacuzzi e la notte di Halloween.',msg:'Ehilà, sono interessato al Weekend di Halloween!'},
     natale:{name:'Mercatini di Natale',img:'natale-new.jpg',date:'26 – 29 novembre 2026',price:'397 €',desc:'Sei un\'anima romantica: luci, casette di legno e vin brulé. Quattro giorni nella Londra di Natale fanno per te.',msg:'Ehilà, sono interessato ai Mercatini di Natale a Londra!'},
     sharm:{name:'Sharm el-Sheikh',img:'sharm-new.jpg',date:'11 – 16 gennaio 2027',price:'687 €',desc:'Hai bisogno di sole e mare: snorkeling tra i coralli e giornate in spiaggia mentre in Italia è pieno inverno.',msg:'Ehilà, sono interessato al viaggio a Sharm el-Sheikh!'}
   };
   var Q = [
-    {q:'Che tipo di viaggio stai cercando?', o:[['mount','Avventura e natura',{islanda:3}],['party','Festa e risate',{halloween:3}],['star','Atmosfera magica',{natale:3}],['sun','Sole e mare',{sharm:3}]]},
-    {q:'Quanto tempo hai?', o:[['cal','Solo un weekend',{halloween:2,natale:2}],['cal','Quasi una settimana',{islanda:2,sharm:2}]]},
-    {q:'Il tuo clima ideale?', o:[['snow','Freddo e paesaggi epici',{islanda:2}],['leaf','Autunno e foglie colorate',{halloween:2}],['cup','Freddo, luci e cioccolata calda',{natale:2}],['sun','Caldo, anche a gennaio',{sharm:2}]]},
-    {q:'La sera ti vedi…', o:[['fire','In una sorgente calda sotto le stelle',{islanda:2}],['moon','A una festa in maschera',{halloween:2}],['cup','Tra le bancarelle con un vin brulé',{natale:2}],['wave','In spiaggia ad ascoltare il mare',{sharm:2}]]},
-    {q:'Quanto vuoi spendere?', o:[['euro','Meno di 300 €',{halloween:2}],['euro','Tra 300 e 400 €',{natale:2}],['euro','Fino a 700 €',{sharm:2,natale:1}],['euro','Fino a 800 €',{islanda:2,sharm:1}]]}
+    {q:'Che tipo di viaggio stai cercando?', o:[['mount','Avventura e natura',{islanda:3}],['party','Festa e risate',{natale:2,sharm:2}],['star','Atmosfera magica',{natale:3}],['sun','Sole e mare',{sharm:3}]]},
+    {q:'Quanto tempo hai?', o:[['cal','Solo un weekend',{natale:3}],['cal','Quasi una settimana',{islanda:2,sharm:2}]]},
+    {q:'Il tuo clima ideale?', o:[['snow','Freddo e paesaggi epici',{islanda:2}],['leaf','Città e passeggiate',{natale:2}],['cup','Freddo, luci e cioccolata calda',{natale:2}],['sun','Caldo, anche a gennaio',{sharm:2}]]},
+    {q:'La sera ti vedi…', o:[['fire','In una sorgente calda sotto le stelle',{islanda:2}],['moon','A ballare fino a tardi',{sharm:1,natale:1}],['cup','Tra le bancarelle con un vin brulé',{natale:2}],['wave','In spiaggia ad ascoltare il mare',{sharm:2}]]},
+    {q:'Quanto vuoi spendere?', o:[['euro','Fino a 400 €',{natale:3}],['euro','Fino a 700 €',{sharm:2,natale:1}],['euro','Fino a 800 €',{islanda:2,sharm:1}]]}
   ];
   var step = 0, score = {};
   function render(){
@@ -1616,7 +1540,7 @@ document.querySelectorAll('.dest-tile').forEach(function(b){
 // conto alla rovescia alla prossima partenza
 (function(){
   var box = document.getElementById('countdown'); if (!box) return;
-  var trips = [['halloween','Weekend Halloween','2026-10-30T00:00:00+01:00'],['islanda','Islanda','2026-11-09T00:00:00+01:00'],['natale','Mercatini di Natale','2026-11-26T00:00:00+01:00'],['sharm','Sharm el-Sheikh','2027-01-11T00:00:00+01:00']];
+  var trips = [['islanda','Islanda','2026-11-09T00:00:00+01:00'],['natale','Mercatini di Natale','2026-11-26T00:00:00+01:00'],['sharm','Sharm el-Sheikh','2027-01-11T00:00:00+01:00']];
   var name = document.getElementById('cd-name'), el = {d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
   function pad(n){ return (n < 10 ? '0' : '') + n; }
   function tick(){
