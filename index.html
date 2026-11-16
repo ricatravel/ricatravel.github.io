@@ -842,7 +842,12 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .gal-soon{margin:0;padding:clamp(28px,4vw,48px) 16px;text-align:center;border:1.5px dashed #C9D6B4;border-radius:18px;color:var(--muted);font-size:15px}
 
 /* partenze: foto tutte della stessa misura anche nelle righe invertite */
-@media (min-width:821px){.trow.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+@media (min-width:821px){.trow.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+.trows{grid-auto-rows:1fr}
+.trow,.trow.flip{align-items:stretch;padding-block:clamp(14px,1.6vw,20px)}
+.trow-img{aspect-ratio:auto;height:auto;min-height:320px}
+.trow-img>img{position:absolute;top:0;left:0}
+.trow-body{align-self:center}}
 </style>
 </head>
 <body>
