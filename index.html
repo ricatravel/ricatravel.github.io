@@ -840,6 +840,9 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .dest-tile span{font-size:clamp(20px,2.2vw,28px) !important;line-height:1.05;right:12px}
 .gal:empty{display:none !important}
 .gal-soon{margin:0;padding:clamp(28px,4vw,48px) 16px;text-align:center;border:1.5px dashed #C9D6B4;border-radius:18px;color:var(--muted);font-size:15px}
+
+/* partenze: foto tutte della stessa misura anche nelle righe invertite */
+@media (min-width:821px){.trow.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
 </style>
 </head>
 <body>
