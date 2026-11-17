@@ -854,9 +854,6 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 @media (max-width:760px){.hero-vid{object-position:50% 40%}}
 
 
-/* video chiaro: velo più scuro per leggere il testo */
-.hero-reel .reel-shade{background:linear-gradient(0deg,rgba(18,30,22,.8) 0%,rgba(18,30,22,.45) 40%,rgba(18,30,22,.25) 70%,rgba(18,30,22,.35) 100%),linear-gradient(90deg,rgba(18,30,22,.5) 0%,rgba(18,30,22,0) 60%) !important}
-.hero-reel .hero-kicker{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
@@ -883,9 +880,10 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="page" data-page="home">
   <div class="hero hero-reel">
     <div class="reel" aria-hidden="true">
-      <video class="reel-video hero-vid" src="hero-reynisfjara.mp4" poster="hero-reynisfjara.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <img class="reel-video reel-photo hero-d" src="carezza.jpg" alt="">
+      <img class="reel-video reel-photo hero-m" src="carezza-hero2.jpg" alt="">
       <div class="reel-shade"></div>
-      <p class="hero-place" aria-hidden="true"><span>63.40° N, 19.04° W</span>Reynisfjara, Islanda</p>
+      <p class="hero-place" aria-hidden="true"><span>46.41° N, 11.57° E</span>Lago di Carezza, Dolomiti</p>
     </div>
     <div class="wrap hero-text">
       <p class="hero-kicker">Viaggi di gruppo low cost</p>
@@ -1736,15 +1734,5 @@ window.addEventListener('hashchange', function(){ if (!lb.hidden) lbClose(); });
 
 <style>.hero-reel h1{max-width:11.5ch !important}</style>
 
-<script>
-(function(){
-  var v=document.querySelector('.hero-vid'); if(!v) return;
-  v.muted=true; v.defaultMuted=true; v.setAttribute('muted',''); v.playsInline=true;
-  function go(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
-  go(); v.addEventListener('canplay',go,{once:true});
-  ['touchstart','click','scroll'].forEach(function(e){ window.addEventListener(e,function h(){ if(v.paused) go(); },{passive:true,once:true}); });
-  document.addEventListener('visibilitychange',function(){ if(!document.hidden&&v.paused) go(); });
-})();
-</script>
 </body>
 </html>
