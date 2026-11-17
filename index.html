@@ -850,9 +850,13 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .trow-body{align-self:center}}
 
 /* copertina: video del tramonto sul mare */
-.hero-vid{object-position:50% 46%}
+.hero-vid{object-position:50% 52%}
 @media (max-width:760px){.hero-vid{object-position:50% 40%}}
-@media (prefers-reduced-motion: reduce){.hero-vid{display:none}.hero-reel{background:#2C4434 url(hero-tramonto.jpg) center 46%/cover no-repeat}}
+@media (prefers-reduced-motion: reduce){.hero-vid{display:none}.hero-reel{background:#2C4434 url(hero-reynisfjara.jpg) center 46%/cover no-repeat}}
+
+/* video chiaro: velo più scuro per leggere il testo */
+.hero-reel .reel-shade{background:linear-gradient(0deg,rgba(18,30,22,.8) 0%,rgba(18,30,22,.45) 40%,rgba(18,30,22,.25) 70%,rgba(18,30,22,.35) 100%),linear-gradient(90deg,rgba(18,30,22,.5) 0%,rgba(18,30,22,0) 60%) !important}
+.hero-reel .hero-kicker{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
@@ -879,8 +883,9 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="page" data-page="home">
   <div class="hero hero-reel">
     <div class="reel" aria-hidden="true">
-      <video class="reel-video hero-vid" src="hero-tramonto.mp4" poster="hero-tramonto.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <video class="reel-video hero-vid" src="hero-reynisfjara.mp4" poster="hero-reynisfjara.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
       <div class="reel-shade"></div>
+      <p class="hero-place" aria-hidden="true"><span>63.40° N, 19.04° W</span>Reynisfjara, Islanda</p>
     </div>
     <div class="wrap hero-text">
       <p class="hero-kicker">Viaggi di gruppo low cost</p>
