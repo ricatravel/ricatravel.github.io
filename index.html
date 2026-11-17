@@ -852,7 +852,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 /* copertina: video del tramonto sul mare */
 .hero-vid{object-position:50% 52%}
 @media (max-width:760px){.hero-vid{object-position:50% 40%}}
-@media (prefers-reduced-motion: reduce){.hero-vid{display:none}.hero-reel{background:#2C4434 url(hero-reynisfjara.jpg) center 46%/cover no-repeat}}
+
 
 /* video chiaro: velo più scuro per leggere il testo */
 .hero-reel .reel-shade{background:linear-gradient(0deg,rgba(18,30,22,.8) 0%,rgba(18,30,22,.45) 40%,rgba(18,30,22,.25) 70%,rgba(18,30,22,.35) 100%),linear-gradient(90deg,rgba(18,30,22,.5) 0%,rgba(18,30,22,0) 60%) !important}
@@ -1736,5 +1736,15 @@ window.addEventListener('hashchange', function(){ if (!lb.hidden) lbClose(); });
 
 <style>.hero-reel h1{max-width:11.5ch !important}</style>
 
+<script>
+(function(){
+  var v=document.querySelector('.hero-vid'); if(!v) return;
+  v.muted=true; v.defaultMuted=true; v.setAttribute('muted',''); v.playsInline=true;
+  function go(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+  go(); v.addEventListener('canplay',go,{once:true});
+  ['touchstart','click','scroll'].forEach(function(e){ window.addEventListener(e,function h(){ if(v.paused) go(); },{passive:true,once:true}); });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden&&v.paused) go(); });
+})();
+</script>
 </body>
 </html>
