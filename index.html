@@ -848,6 +848,11 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 .trow-img{aspect-ratio:auto;height:auto;min-height:320px}
 .trow-img>img{position:absolute;top:0;left:0}
 .trow-body{align-self:center}}
+
+/* copertina: video del tramonto sul mare */
+.hero-vid{object-position:50% 46%}
+@media (max-width:760px){.hero-vid{object-position:50% 40%}}
+@media (prefers-reduced-motion: reduce){.hero-vid{display:none}.hero-reel{background:#2C4434 url(hero-tramonto.jpg) center 46%/cover no-repeat}}
 </style>
 </head>
 <body>
@@ -874,8 +879,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="page" data-page="home">
   <div class="hero hero-reel">
     <div class="reel" aria-hidden="true">
-      <img class="reel-video reel-photo hero-d" src="carezza.jpg" alt="">
-      <img class="reel-video reel-photo hero-m" src="carezza-hero2.jpg" alt="">
+      <video class="reel-video hero-vid" src="hero-tramonto.mp4" poster="hero-tramonto.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
       <div class="reel-shade"></div>
     </div>
     <div class="wrap hero-text">
@@ -890,7 +894,6 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
         <span class="crew-txt"><b>Gente vera, viaggi veri</b>Guarda i momenti dei nostri viaggi</span>
       </a>
     </div>
-    <p class="hero-place" aria-hidden="true"><span>46.41° N, 11.57° E</span>Lago di Carezza, Dolomiti</p>
     
     <a class="scroll-cue" href="#scopri" aria-label="Scorri alle prossime partenze">Scorri<i></i></a>
   </div>
