@@ -1431,7 +1431,6 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             Apri WhatsApp
           </a>
         </div>
-        <div class="handle">WhatsApp <code id="wa-num">+39 350 931 8685</code> <button class="copy" id="copy-num" type="button">Copia numero</button></div>
         <div class="handle">Instagram <a class="ig" href="https://www.instagram.com/ricatravel.it/" id="ig-link">@ricatravel.it</a></div>
       </div>
     </div>
@@ -1477,12 +1476,6 @@ document.querySelectorAll('.wa-link').forEach(function(a){
   if (WHATSAPP) a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(a.dataset.msg || '');
 });
 if (INSTAGRAM){ var ig = document.getElementById('ig-link'); ig.href = 'https://www.instagram.com/' + INSTAGRAM + '/'; ig.textContent = '@' + INSTAGRAM; }
-var copyBtn = document.getElementById('copy-num');
-copyBtn.addEventListener('click', function(){
-  var num = document.getElementById('wa-num');
-  function select(){ var r=document.createRange(); r.selectNodeContents(num); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
-  try { navigator.clipboard.writeText(num.textContent).then(function(){ copyBtn.textContent='Copiato'; }, select); } catch(e){ select(); }
-});
 // pagine: il menu mostra una sezione alla volta
 var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
 var ids = pages.map(function(p){ return p.dataset.page; });
