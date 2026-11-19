@@ -859,6 +859,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 
 /* menu a tendina solo su telefono */
 .menu-btn{display:none}
+.brand .brand-word{display:none}
 @media (max-width:640px){
   header .bar{position:relative}
   .menu-btn{display:grid;place-content:center;gap:5px;width:46px;height:46px;margin-left:auto;padding:0;border:1.5px solid rgba(251,249,240,.55);border-radius:50%;background:transparent;cursor:pointer;position:relative;z-index:3}
@@ -867,7 +868,11 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   body.menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   body.menu-open .menu-btn span:nth-child(2){opacity:0}
   body.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  header .brand{position:relative;z-index:3}
+  header .brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;border-radius:0;overflow:visible;box-shadow:none}
+  header .brand:hover{transform:translate(-50%,-50%)}
+  header .brand .brand-round{display:none}
+  header .brand .brand-word{display:block;width:auto;height:54px}
+  header .bar{min-height:66px;padding-block:10px}
   header nav{position:fixed !important;top:0;right:0;bottom:0;left:0;z-index:2;background:#2C4434;overflow:auto !important;-webkit-mask-image:none !important;mask-image:none !important;
     padding:calc(env(safe-area-inset-top,0px) + 110px) max(24px,env(safe-area-inset-right,0px)) 40px max(24px,env(safe-area-inset-left,0px));
     opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s .3s}
@@ -888,7 +893,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 <div class="progress" aria-hidden="true"></div>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#home"><img src="logo-tondo.jpg" alt="Rica Travel, torna all'inizio" width="300" height="300"></a>
+    <a class="brand" href="#home" aria-label="Rica Travel, torna all'inizio"><img class="brand-round" src="logo-tondo.jpg" alt="" width="300" height="300"><img class="brand-word" src="logo-scritta.png" alt="" width="350" height="240"></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     <nav aria-label="Sezioni" id="site-nav">
       <ul>
@@ -1475,7 +1480,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 <footer>
   <div class="wrap foot">
     <div class="foot-brand">
-      <a class="brand" href="#home"><img src="logo-tondo.jpg" alt="Rica Travel, torna all'inizio" width="300" height="300"></a>
+      <a class="brand" href="#home" aria-label="Rica Travel, torna all'inizio"><img class="brand-round" src="logo-tondo.jpg" alt="" width="300" height="300"><img class="brand-word" src="logo-scritta.png" alt="" width="350" height="240"></a>
       <p>Viaggi di gruppo low cost, con itinerario già pronto e compagni di viaggio nuovi.</p>
     </div>
     <div>
