@@ -856,6 +856,29 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 
 
 .ig-tag{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+/* menu a tendina solo su telefono */
+.menu-btn{display:none}
+@media (max-width:640px){
+  header .bar{position:relative}
+  .menu-btn{display:grid;place-content:center;gap:5px;width:46px;height:46px;margin-left:auto;padding:0;border:1.5px solid rgba(251,249,240,.55);border-radius:50%;background:transparent;cursor:pointer;position:relative;z-index:3}
+  .menu-btn span{display:block;width:20px;height:2px;border-radius:2px;background:#FBF9F0;transition:transform .3s ease,opacity .2s ease}
+  .menu-btn:focus-visible{outline:2px solid #D3E3B6;outline-offset:3px}
+  body.menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  body.menu-open .menu-btn span:nth-child(2){opacity:0}
+  body.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  header .brand{position:relative;z-index:3}
+  header nav{position:fixed !important;top:0;right:0;bottom:0;left:0;z-index:2;background:#2C4434;overflow:auto !important;-webkit-mask-image:none !important;mask-image:none !important;
+    padding:calc(env(safe-area-inset-top,0px) + 110px) max(24px,env(safe-area-inset-right,0px)) 40px max(24px,env(safe-area-inset-left,0px));
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s .3s}
+  body.menu-open header nav{opacity:1;visibility:visible;transition:opacity .3s ease}
+  header nav ul{display:grid !important;gap:6px !important;padding:0 !important;justify-content:stretch !important}
+  header nav li{border-bottom:1px solid rgba(251,249,240,.15)}
+  header nav a{display:block !important;font-size:26px !important;letter-spacing:-.01em !important;text-transform:none !important;font-weight:600 !important;padding:16px 0 !important;background:none !important;white-space:normal !important}
+  header nav a[aria-current="page"]{color:#D3E3B6}
+  body.menu-open{overflow:hidden}
+}
+@media (max-width:640px) and (prefers-reduced-motion: reduce){header nav,.menu-btn span{transition:none !important}}
 </style>
 </head>
 <body>
@@ -866,7 +889,8 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 <header>
   <div class="wrap bar">
     <a class="brand" href="#home"><img src="logo-tondo.jpg" alt="Rica Travel, torna all'inizio" width="300" height="300"></a>
-    <nav aria-label="Sezioni">
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+    <nav aria-label="Sezioni" id="site-nav">
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#partenze">Partenze</a></li>
@@ -1728,5 +1752,15 @@ window.addEventListener('hashchange', function(){ if (!lb.hidden) lbClose(); });
 
 <style>.hero-reel h1{max-width:11.5ch !important}</style>
 
+<script>
+(function(){
+  var b=document.getElementById('menu-btn'), nav=document.getElementById('site-nav'); if(!b||!nav) return;
+  function set(open){ document.body.classList.toggle('menu-open',open); b.setAttribute('aria-expanded',open?'true':'false'); b.setAttribute('aria-label',open?'Chiudi il menu':'Apri il menu'); }
+  b.addEventListener('click',function(){ set(!document.body.classList.contains('menu-open')); });
+  nav.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>640) set(false); });
+})();
+</script>
 </body>
 </html>
