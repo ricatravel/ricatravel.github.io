@@ -851,6 +851,12 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
 
 /* copertina: video del tramonto sul mare */
 .hero-vid{object-position:50% 50%}
+/* computer: video spostato a destra, sfuma nel verde a sinistra, così i volti restano fuori dal testo */
+@media (min-width:761px){
+  .hero-reel .reel{background:#1C2C22}
+  .hero-vid{left:auto !important;width:74% !important;object-position:50% 45% !important;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%)}
+}
 @media (max-width:760px){.hero-vid{object-position:50% 50%}}
 /* video chiaro (neve): velo più scuro per leggere il testo */
 .hero-reel .reel-shade{background:linear-gradient(0deg,rgba(18,30,22,.82) 0%,rgba(18,30,22,.45) 40%,rgba(18,30,22,.2) 70%,rgba(18,30,22,.35) 100%),linear-gradient(90deg,rgba(18,30,22,.5) 0%,rgba(18,30,22,0) 60%) !important}
@@ -914,7 +920,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
   <div class="page" data-page="home">
   <div class="hero hero-reel">
     <div class="reel" aria-hidden="true">
-      <video class="reel-video hero-vid" src="hero-thingvellir.mp4" poster="hero-thingvellir.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <video class="reel-video hero-vid" src="hero-islanda.mp4" poster="hero-islanda.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
       <div class="reel-shade"></div>
       <p class="hero-place" aria-hidden="true"><span>64.26° N, 21.13° W</span>Þingvellir, Islanda</p>
     </div>
