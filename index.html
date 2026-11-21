@@ -1014,7 +1014,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
             <a class="dep-img" href="#sharm" aria-label="Scopri il viaggio: Sharm el-Sheikh"><img style="object-position:50% 40%" src="sharm-new.jpg" alt="Spiaggia di Sharm con ombrelloni colorati e il mare turchese del Mar Rosso"><span class="badge"><i></i>Posti disponibili</span></a>
             <div class="dep-body">
               <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
-              <p>11 – 16 gennaio 2027</p>
+              <p>Coming soon</p>
               <p class="dep-price">687 €</p>
               <a class="btn btn-wa" href="#sharm">Scopri il viaggio</a>
               <a class="btn btn-line wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota ora</a>
@@ -1154,7 +1154,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
           <div class="trow-body">
             <p class="trow-num">03</p>
             <h3><a class="dep-title" href="#sharm">Sharm el-Sheikh</a></h3>
-            <p class="trow-dates">11 / 16 gennaio 2027</p>
+            <p class="trow-dates">Coming soon</p>
             <p class="trow-desc">Sole a gennaio sul Mar Rosso: spiagge, snorkeling tra i coralli e serate in compagnia.</p>
             <ul class="trow-tags"><li>Mare</li><li>Snorkeling</li><li>Sole d'inverno</li></ul>
             <div class="trow-foot">
@@ -1291,7 +1291,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
         <div class="tp-hero-text">
           <span class="badge"><i></i>Posti disponibili</span>
           <h1>Sharm el-Sheikh</h1>
-          <p>11 – 16 gennaio 2027 · 6 giorni · mare e deserto</p>
+          <p>Coming soon · 6 giorni · mare e deserto</p>
         </div>
       </div>
 
@@ -1328,7 +1328,7 @@ footer{padding-block:56px 96px;border-top:0;font-size:13px;display:grid;gap:32px
         <aside class="tp-book">
           <p class="eyebrow">Prenota il tuo posto</p>
           <dl>
-            <div><dt>Date</dt><dd>11 – 16 gennaio 2027</dd></div>
+            <div><dt>Date</dt><dd>Coming soon</dd></div>
             <div><dt>Prezzo</dt><dd>687 €</dd></div>
           </dl>
           <a class="btn btn-wa wa-link" data-msg="Ehilà, sono interessato al viaggio a Sharm el-Sheikh!" href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6Z"/></svg>Prenota il tuo posto</a>
@@ -1565,7 +1565,7 @@ document.querySelectorAll('.dest-tile').forEach(function(b){
   var TRIPS = {
     islanda:{name:'Islanda',img:'foto-islanda.jpg',date:'9 – 14 novembre 2026',price:'777 €',desc:'Sei avventura allo stato puro: cascate, ghiacciai, spiagge nere e bagni nelle sorgenti calde. Il roadtrip in Islanda è il tuo viaggio.',msg:'Ehilà, sono interessato al viaggio in Islanda!'},
     neve:{name:'Weekend sulla neve',img:'neve.jpg',date:'22 – 25 gennaio 2027',price:'657 €',desc:'Ti piace la montagna e lo sport: due giorni sugli sci, cavalli nella neve e apreski al tramonto. Il weekend in Val di Sole fa per te.',msg:'Ehilà, sono interessato al weekend sulla neve!'},
-    sharm:{name:'Sharm el-Sheikh',img:'sharm-new.jpg',date:'11 – 16 gennaio 2027',price:'687 €',desc:'Hai bisogno di sole e mare: snorkeling tra i coralli e giornate in spiaggia mentre in Italia è pieno inverno.',msg:'Ehilà, sono interessato al viaggio a Sharm el-Sheikh!'}
+    sharm:{name:'Sharm el-Sheikh',img:'sharm-new.jpg',date:'Coming soon',price:'687 €',desc:'Hai bisogno di sole e mare: snorkeling tra i coralli e giornate in spiaggia mentre in Italia è pieno inverno.',msg:'Ehilà, sono interessato al viaggio a Sharm el-Sheikh!'}
   };
   var Q = [
     {q:'Che tipo di viaggio stai cercando?', o:[['mount','Avventura e natura',{islanda:3}],['party','Festa e risate',{neve:2,sharm:2}],['snow','Sport e montagna',{neve:3}],['sun','Sole e mare',{sharm:3}]]},
@@ -1604,7 +1604,7 @@ document.querySelectorAll('.dest-tile').forEach(function(b){
 // conto alla rovescia alla prossima partenza
 (function(){
   var box = document.getElementById('countdown'); if (!box) return;
-  var trips = [['islanda','Islanda','2026-11-09T00:00:00+01:00'],['sharm','Sharm el-Sheikh','2027-01-11T00:00:00+01:00'],['neve','Weekend sulla neve','2027-01-22T00:00:00+01:00']];
+  var trips = [['islanda','Islanda','2026-11-09T00:00:00+01:00'],['neve','Weekend sulla neve','2027-01-22T00:00:00+01:00']];
   var name = document.getElementById('cd-name'), el = {d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
   function pad(n){ return (n < 10 ? '0' : '') + n; }
   function tick(){
