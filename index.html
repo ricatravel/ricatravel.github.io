@@ -23,16 +23,16 @@
 <meta property="og:locale" content="it_IT">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Ricatravel", "description": "Viaggi tra sconosciuti e viaggi di gruppo low cost, con coordinatore e itinerario su misura.", "url": "https://ricatravel.it", "image": "carezza.jpg", "logo": "logo-tondo.jpg", "telephone": "+39 350 931 8685", "sameAs": ["https://www.instagram.com/ricatravel.it/"], "areaServed": "IT", "knowsLanguage": "it"}</script>
 <link data-keep rel="preconnect" href="https://fonts.googleapis.com">
-<link data-keep rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap">
+<link data-keep rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Figtree:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap">
 <style id="page-style">
 /* Layout: diario di viaggio su fondo verde salvia. Copertina con titolo al centro su un paesaggio a strati con profondità, poi pagine color sabbia con immagini ad arco, gallerie a due colonne e note scritte a mano */
 :root{
   --sand:#FBF9F0; --paper:#F3F1E3; --ink:#2C4434; --muted:#526256;
   --sea:#2C4434; --amber:#5E7A3A; --glow:#D3E3B6; --sage:#E4ECD0; --line:#DEDDC8; --wa:#2C4434; --onacc:#FBF9F0;
   --shadow:rgba(30,43,34,.3);
-  --f-display:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
-  --f-hand:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
-  --f-accent:'Plus Jakarta Sans', 'Figtree', system-ui, sans-serif;
+  --f-display:'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
+  --f-hand:'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
+  --f-accent:'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
   --f-body:'Figtree', system-ui, -apple-system, sans-serif;
   color-scheme:light;
 }
@@ -476,6 +476,9 @@ h2 em{background:linear-gradient(transparent 0) 0 0/0 0;background-image:linear-
 .hero-reel .scroll-cue i{height:24px}
 
 /* palette "wild": header verde scuro, crema e verde chiaro */
+/* Bricolage Grotesque: spaziatura un po' più ariosa nei titoli */
+h1,h2,h3,h2 em,h1 em{letter-spacing:-.018em !important}
+.hero-reel h1,.hero h1,.tp-hero-text h1{letter-spacing:-.025em !important}
 header{background:#2C4434;border-bottom-color:#2C4434;top:0 !important;padding-top:env(safe-area-inset-top,0px);backdrop-filter:none}
 /* barra fissa in alto: così i browser dentro le app (WhatsApp, Instagram) colorano di verde anche la zona sopra, senza far vedere il sito che scorre */
 html{background:#2C4434}
@@ -677,7 +680,7 @@ h2 em{background-image:linear-gradient(#D3E3B6,#D3E3B6);background-repeat:no-rep
 .hero-reel .hero-text{justify-items:start !important;text-align:left;max-width:1120px;width:100%;padding:0 20px clamp(56px,9vh,104px) !important;margin-inline:auto;gap:18px !important}
 .hero-reel .hero-kicker{font-size:12px !important;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#E4ECD0 !important;display:flex;align-items:center;gap:12px}
 .hero-reel .hero-kicker::before{content:"";width:34px;height:1px;background:currentColor}
-.hero-reel h1{font-size:clamp(46px,8.6vw,128px) !important;line-height:.94 !important;letter-spacing:-.05em !important;max-width:9.5ch !important;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.hero-reel h1{font-size:clamp(46px,8.6vw,128px) !important;line-height:.94 !important;max-width:10ch !important;text-shadow:0 6px 40px rgba(0,0,0,.25)}
 .hero-reel h1 em{display:block;color:#D3E3B6}
 .hero-reel .cta{justify-content:flex-start !important;margin-top:6px}
 .hero-place{position:absolute;right:clamp(20px,4vw,56px);bottom:clamp(120px,15vh,160px);margin:0;display:grid;justify-items:end;gap:4px;color:#FBF9F0;font-size:13px;font-weight:600;letter-spacing:.04em;text-align:right;z-index:2}
