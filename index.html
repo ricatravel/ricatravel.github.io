@@ -477,10 +477,6 @@ h2 em{background:linear-gradient(transparent 0) 0 0/0 0;background-image:linear-
 
 /* palette "wild": header verde scuro, crema e verde chiaro */
 header{background:#2C4434;border-bottom-color:#2C4434;top:0 !important;padding-top:env(safe-area-inset-top,0px);backdrop-filter:none}
-/* barra fissa in alto: così i browser dentro le app (WhatsApp, Instagram) colorano di verde anche la zona sopra, senza far vedere il sito che scorre */
-html{background:#2C4434}
-header{position:fixed !important;left:0;right:0}
-body{padding-top:var(--hh,77px)}
 header nav a{color:#FBF9F0}
 header nav a[aria-current="page"],header nav a:hover{color:#D3E3B6}
 .brand{box-shadow:0 0 0 3px #2C4434,0 0 0 4px #D3E3B6}
@@ -1795,9 +1791,6 @@ window.addEventListener('hashchange', function(){ if (!lb.hidden) lbClose(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
   window.addEventListener('resize',function(){ if(window.innerWidth>640) set(false); });
 })();
-</script>
-<script>
-(function(){var h=document.querySelector('header');if(!h)return;function f(){document.documentElement.style.setProperty('--hh',h.offsetHeight+'px');}f();window.addEventListener('resize',f);window.addEventListener('load',f);if(window.ResizeObserver)new ResizeObserver(f).observe(h);})();
 </script>
 </body>
 </html>
